@@ -1,0 +1,13 @@
+target/
+bin/
+build/
+logs/
+.gradle/
+.classpath
+.project
+.settings/
+/$Recycle.Bin
+.idea
+*.iml
+work/
+out/
