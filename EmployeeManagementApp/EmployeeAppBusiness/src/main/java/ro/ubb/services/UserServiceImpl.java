@@ -3,9 +3,10 @@ package ro.ubb.services;
 import ro.ubb.exceptions.DbException;
 import ro.ubb.implementations.UserDaoImpl;
 import ro.ubb.interfaces.UserDao;
+import ro.ubb.interfaces.UserService;
 import ro.ubb.models.User;
 
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     private static final int WRONG_CREDENTIALS = 1;
     private static final int USER_IS_LOCKED = 2;
     private static final int SUCCESS = 3;
