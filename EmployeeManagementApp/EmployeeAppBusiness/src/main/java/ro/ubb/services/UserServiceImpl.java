@@ -24,14 +24,15 @@ public class UserServiceImpl implements UserService {
             return WRONG_CREDENTIALS;
         }
 
-        if (userDao.isLocked(usernameOrEmail)) {
-            return USER_IS_LOCKED;
-        }
-
         if (user.getPassword().equals(password)) {
-            return SUCCESS;
+            if (!(userDao.isLocked(usernameOrEmail))) {
+                return SUCCESS;
+            } else {
+                return USER_IS_LOCKED;
+            }
         }
 
         return WRONG_CREDENTIALS;
+
     }
 }

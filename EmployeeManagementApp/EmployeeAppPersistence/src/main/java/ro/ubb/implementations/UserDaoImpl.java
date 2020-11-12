@@ -213,11 +213,11 @@ public class UserDaoImpl implements GenericDao, UserDao {
     public boolean isLocked(String usernameOrEmail) throws DbException {
         User user = findByUsername(usernameOrEmail);
         if (user != null) {
-            return user.getFailed_attempts() > 0;
+            return user.getFailed_attempts() == 0;
         } else {
             user = findByEmail(usernameOrEmail);
             if (user != null)
-                return user.getFailed_attempts() > 0;
+                return user.getFailed_attempts() == 0;
             else
                 return false;
         }
