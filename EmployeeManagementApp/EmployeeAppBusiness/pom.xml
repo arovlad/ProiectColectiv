@@ -15,4 +15,11 @@
 
     <name>EmployeeAppBusiness</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>ro.ubb</groupId>
+            <artifactId>EmployeeAppPersistence</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
