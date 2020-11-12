@@ -11,92 +11,129 @@ import java.sql.*;
 public class UserDaoImpl implements GenericDao, UserDao {
 
     @Override
-    public User find(int id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection connection = databaseConnection.getConnection();
+    public User find(int id) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        String querySelect = "SELECT * FROM userlogin WHERE ID = " + id;
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(querySelect);
-        int id_user, id_role_user, failed_attempts_user;
-        String username_user, email_user, password_user;
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
 
-        if (resultSet.next()) {
-            id_user = resultSet.getInt("ID");
-            username_user = resultSet.getString("Username");
-            email_user = resultSet.getString("Email");
-            password_user = resultSet.getString("Password");
-            id_role_user = resultSet.getInt("ID_Role");
-            failed_attempts_user = resultSet.getInt("Failed_Attempts");
-        } else
-            return null;
+            String querySelect = "SELECT * FROM userlogin WHERE ID = " + id;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(querySelect);
+            int id_user, id_role_user, failed_attempts_user;
+            String username_user, email_user, password_user;
 
-        return new User(id_user, username_user, email_user, password_user, id_role_user, failed_attempts_user);
+            if (resultSet.next()) {
+                id_user = resultSet.getInt("ID");
+                username_user = resultSet.getString("Username");
+                email_user = resultSet.getString("Email");
+                password_user = resultSet.getString("Password");
+                id_role_user = resultSet.getInt("ID_Role");
+                failed_attempts_user = resultSet.getInt("Failed_Attempts");
+            } else
+                return null;
+
+            return new User(id_user, username_user, email_user, password_user, id_role_user,
+                failed_attempts_user);
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
     }
 
     @Override
-    public User save(Object entity) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection connection = databaseConnection.getConnection();
+    public User save(Object entity) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        User user = (User) entity;
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
 
-        String queryInsert = "INSERT INTO userlogin(username,email,password,id_role) VALUES (?,?,?,?); ";
-        PreparedStatement statement = connection.prepareStatement(queryInsert);
-        statement.setString(1, user.getUsername());
-        statement.setString(2, user.getEmail());
-        statement.setString(3, user.getPassword());
-        statement.setInt(4, user.getId_role());
-        int result = statement.executeUpdate();
+            User user = (User) entity;
 
-        if (result == 1)
-            return user;
-        else
-            return null;
+            String queryInsert = "INSERT INTO userlogin(username,email,password,id_role) VALUES (?,?,?,?); ";
+            PreparedStatement statement = connection.prepareStatement(queryInsert);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setInt(4, user.getId_role());
+            int result = statement.executeUpdate();
+
+            if (result == 1)
+                return user;
+            else
+                return null;
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
     }
 
     @Override
-    public User delete(int id) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection connection = databaseConnection.getConnection();
+    public User delete(int id) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        String queryDelete = "DELETE FROM userlogin WHERE ID = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(queryDelete);
-        preparedStatement.setInt(1, id);
-        User user = find(id);
-        int result = preparedStatement.executeUpdate();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
 
-        if (result == 1)
-            return user;
-        else
-            return null;
+            String queryDelete = "DELETE FROM userlogin WHERE ID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryDelete);
+            preparedStatement.setInt(1, id);
+            User user = find(id);
+            int result = preparedStatement.executeUpdate();
+
+            if (result == 1)
+                return user;
+            else
+                return null;
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
     }
 
     @Override
-    public User update(Object entity) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection connection = databaseConnection.getConnection();
+    public User update(Object entity) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        User user = (User) entity;
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
 
-        String queryUpdate = "UPDATE userlogin SET username = ?, email = ?, password = ?, id_role = ?, failed_attempts = ? WHERE ID = ?";
-        PreparedStatement statement = connection.prepareStatement(queryUpdate);
-        statement.setString(1, user.getUsername());
-        statement.setString(2, user.getEmail());
-        statement.setString(3, user.getPassword());
-        statement.setInt(4, user.getId_role());
-        statement.setInt(5, user.getFailed_attempts());
-        statement.setInt(6, user.getId());
-        int result = statement.executeUpdate();
+            User user = (User) entity;
 
-        if (result == 1)
-            return user;
-        else
-            return null;
+            String queryUpdate = "UPDATE userlogin SET username = ?, email = ?, password = ?, id_role = ?, failed_attempts = ? WHERE ID = ?";
+            PreparedStatement statement = connection.prepareStatement(queryUpdate);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setInt(4, user.getId_role());
+            statement.setInt(5, user.getFailed_attempts());
+            statement.setInt(6, user.getId());
+            int result = statement.executeUpdate();
+
+            if (result == 1)
+                return user;
+            else
+                return null;
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
     }
 
     @Override
