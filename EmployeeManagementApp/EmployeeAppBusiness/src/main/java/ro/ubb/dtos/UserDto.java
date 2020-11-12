@@ -1,6 +1,6 @@
 package ro.ubb.dtos;
 
-public class UserDTO {
+public class UserDto {
     private int userId;
     private String firstName;
     private String lastName;
@@ -37,7 +37,7 @@ public class UserDTO {
         return email;
     }
 
-    public void setEmail() {
+    public void setEmail(String email) {
         this.email = email;
     }
 }
