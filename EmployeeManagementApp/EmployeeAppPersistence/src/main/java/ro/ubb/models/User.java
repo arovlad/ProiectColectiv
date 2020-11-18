@@ -6,19 +6,19 @@ public class User {
     private String email;
     private String password;
     private int id_role;
-    private int failed_attempts;
+    private int remaining_attempts;
 
     public User(){
 
     }
 
-    public User(int id, String username, String email, String password, int id_role, int failed_attempts) {
+    public User(int id, String username, String email, String password, int id_role, int remaining_attempts) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.id_role = id_role;
-        this.failed_attempts = failed_attempts;
+        this.remaining_attempts = remaining_attempts;
     }
 
     public User(String username, String email, String password, int id_role) {
@@ -68,11 +68,11 @@ public class User {
         this.id_role = id_role;
     }
 
-    public int getFailed_attempts() {
-        return failed_attempts;
+    public int getRemaining_attempts() {
+        return remaining_attempts;
     }
 
-    public void setFailed_attempts(int failed_attempts) {
-        this.failed_attempts = failed_attempts;
+    public void setRemaining_attempts(int remaining_attempts) {
+        this.remaining_attempts = remaining_attempts;
     }
 }
