@@ -1,13 +1,15 @@
 package ro.ubb.dtos;
 
-public class IntegerResponseDto {
-    int response;
+import ro.ubb.models.LogInResponse;
 
-    public int getResponse() {
+public class IntegerResponseDto {
+    LogInResponse response;
+
+    public LogInResponse getResponse() {
         return response;
     }
 
-    public void setResponse(int response) {
+    public void setResponse(LogInResponse response) {
         this.response = response;
     }
 }
