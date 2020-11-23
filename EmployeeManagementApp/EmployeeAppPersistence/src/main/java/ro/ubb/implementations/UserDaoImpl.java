@@ -5,6 +5,7 @@ import ro.ubb.interfaces.GenericDao;
 import ro.ubb.interfaces.UserDao;
 import ro.ubb.models.User;
 import ro.ubb.utilities.DatabaseConnection;
+import ro.ubb.implementations.SHAEncryption;
 
 import java.sql.*;
 
@@ -60,10 +61,11 @@ public class UserDaoImpl implements GenericDao, UserDao {
             User user = (User) entity;
 
             String queryInsert = "INSERT INTO userlogin(username,email,password,id_role) VALUES (?,?,?,?); ";
+            String encryptedPass=SHAEncryption.get_SHA1(user.getPassword());
             PreparedStatement statement = connection.prepareStatement(queryInsert);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
+            statement.setString(3, encryptedPass);
             statement.setInt(4, user.getId_role());
             int result = statement.executeUpdate();
 
@@ -118,10 +120,11 @@ public class UserDaoImpl implements GenericDao, UserDao {
             User user = (User) entity;
 
             String queryUpdate = "UPDATE userlogin SET username = ?, email = ?, password = ?, id_role = ?, remaining_attempts = ? WHERE ID = ?";
+            String encryptedPass=SHAEncryption.get_SHA1(user.getPassword());
             PreparedStatement statement = connection.prepareStatement(queryUpdate);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
+            statement.setString(3, encryptedPass);
             statement.setInt(4, user.getId_role());
             statement.setInt(5, user.getRemaining_attempts());
             statement.setInt(6, user.getId());
