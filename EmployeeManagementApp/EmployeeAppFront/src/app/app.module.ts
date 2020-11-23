@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 
-import {FormsModule} from "@angular/forms";
-import {AuthModule} from "./auth/auth.module";
+import {FormsModule} from '@angular/forms';
+import {AuthModule} from './auth/auth.module';
+import {LoginService} from './services/login.service';
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import {AuthModule} from "./auth/auth.module";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

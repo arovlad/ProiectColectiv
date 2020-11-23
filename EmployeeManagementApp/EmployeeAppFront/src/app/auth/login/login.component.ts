@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -6,13 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: String="";
-  password: String="";
-  message: String="";
+  username = '';
+  password = '';
+  message = '';
 
-  constructor() { }
+  constructor(private loginService: LoginService, private router: Router) {
+  }
+
+  // constructor() {
+  // }
 
   ngOnInit(): void {
   }
-
+ Login(): void {
+    this.loginService.Login(this.username, this.password).subscribe(
+      response => {
+        const result = response.json();
+      },
+      error => {
+        alert('This user does not exist');
+      }
+    );
+  }
 }
