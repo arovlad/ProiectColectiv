@@ -7,19 +7,20 @@ import { AppComponent } from './app.component';
 
 import {FormsModule} from '@angular/forms';
 import {AuthModule} from './auth/auth.module';
+import {DashboardModule} from './dashboard/dashboard.module';
 import {LoginService} from './services/login.service';
 
 
 @NgModule({
   declarations: [
     AppComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AuthModule,
+    DashboardModule,
     HttpClientModule
   ],
   providers: [LoginService],
