@@ -73,6 +73,13 @@ public class UserServiceImpl implements UserService {
         }
         if(userName == null && userEmail == null)     {
             registerResponse.setRegisterResult(SUCCES_REGISTER);
+            User newUser = new User();
+            newUser.setEmail(email);
+            newUser.setUsername(username);
+            newUser.setPassword(password);
+            newUser.setId_role(1);
+            UserDaoImpl u = new UserDaoImpl();
+            u.save(newUser);
         }
         return registerResponse;
     }

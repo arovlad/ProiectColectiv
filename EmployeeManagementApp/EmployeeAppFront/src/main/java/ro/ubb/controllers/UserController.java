@@ -29,7 +29,7 @@ public class UserController {
         integerResponseDto.setResponse(userService.logIn(loginDto.getUsernameOrEmail(), loginDto.getPassword()));
         return integerResponseDto;
     }
-
+  @POST
   @Path("/register")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
