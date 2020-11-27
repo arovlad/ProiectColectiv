@@ -6,6 +6,7 @@ import ro.ubb.implementations.UserDaoImpl;
 import ro.ubb.interfaces.UserDao;
 import ro.ubb.interfaces.UserService;
 import ro.ubb.models.LogInResponse;
+import ro.ubb.models.RegisterResponse;
 import ro.ubb.models.User;
 
 import java.util.List;
@@ -14,6 +15,11 @@ public class UserServiceImpl implements UserService {
     private static final int WRONG_CREDENTIALS = 1;
     private static final int USER_IS_LOCKED = 2;
     private static final int SUCCESS = 3;
+
+    private static final int EXISTING_EMAIL=4;
+    private static final int EXISTING_USERNAME=5;
+    private static final int EXISTING_USERNAME_AND_EMAIL=6;
+    private static final int SUCCES_REGISTER=7;
 
     public LogInResponse logIn(String usernameOrEmail, String password) throws DbException {
         UserDao userDao = new UserDaoImpl();
@@ -50,5 +56,24 @@ public class UserServiceImpl implements UserService {
         logInResponse.setNrRemainigAttempts(-1);
         return logInResponse;
 
+    }
+    public RegisterResponse register(String username, String email, String password) throws DbException {
+        UserDao userDao = new UserDaoImpl();
+        RegisterResponse registerResponse = new RegisterResponse();
+        User userEmail=userDao.findByEmail(email);
+        User userName=userDao.findByUsername(username);
+        if(userEmail != null){
+            registerResponse.setRegisterResult(EXISTING_EMAIL);
+        }
+        if (userName != null){
+                   registerResponse.setRegisterResult(EXISTING_USERNAME);
+        }
+        if(userName != null && userEmail !=null){
+            registerResponse.setRegisterResult(EXISTING_USERNAME_AND_EMAIL);
+        }
+        if(userName == null && userEmail == null)     {
+            registerResponse.setRegisterResult(SUCCES_REGISTER);
+        }
+        return registerResponse;
     }
 }
