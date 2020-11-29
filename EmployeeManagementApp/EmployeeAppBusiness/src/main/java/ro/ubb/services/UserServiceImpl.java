@@ -1,6 +1,7 @@
 package ro.ubb.services;
 
 import ro.ubb.exceptions.DbException;
+import ro.ubb.implementations.SHAEncryption;
 import ro.ubb.implementations.UserDaoImpl;
 import ro.ubb.interfaces.UserDao;
 import ro.ubb.interfaces.UserService;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
             return logInResponse;
         }
 
-        if (user.getPassword().equals(password)) {
+        if (user.getPassword().equals(SHAEncryption.get_SHA1(password))) {
             if (!(userDao.isLocked(usernameOrEmail))) {
                 logInResponse.setLogInResult(SUCCESS);
                 logInResponse.setUserRoleId(user.getId_role());
