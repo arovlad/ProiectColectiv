@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
             logInResponse.setLogInResult(WRONG_CREDENTIALS);
             logInResponse.setUserRoleId(-1);
             logInResponse.setNrRemainigAttempts(-1);
+//            try {
+//                User userUpdated = userDao.updateAttempts(usernameOrEmail);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             return logInResponse;
         }
 

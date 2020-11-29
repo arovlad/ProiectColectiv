@@ -23,4 +23,5 @@ public interface UserDao {
      */
     boolean isLocked(String usernameOrEmail) throws DbException;
 
+    User updateAttempts(String usernameOrEmail)throws Exception;
 }
