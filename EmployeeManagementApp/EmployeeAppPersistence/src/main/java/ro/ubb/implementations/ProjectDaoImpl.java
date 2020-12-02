@@ -60,7 +60,7 @@ public class ProjectDaoImpl implements GenericDao, ProjectDao {
 
             Project project = (Project) entity;
         if(project.getId_customer()!= 0) {
-            System.out.println("hello");
+
             String queryInsert = "INSERT INTO project ( Project_Name ,ID_Customer,Duration,Description,ID_Industry) VALUES (?,?,?,?,?); ";
             PreparedStatement statement = connection.prepareStatement(queryInsert);
             statement.setString(1, project.getName());
