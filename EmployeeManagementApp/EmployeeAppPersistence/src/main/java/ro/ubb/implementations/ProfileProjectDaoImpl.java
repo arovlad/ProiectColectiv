@@ -1,21 +1,17 @@
 package ro.ubb.implementations;
 
-import ro.ubb.constants.TechnologyArea;
+import ro.ubb.constants.ProjectRole;
 import ro.ubb.exceptions.DbException;
 import ro.ubb.interfaces.GenericDao;
-import ro.ubb.interfaces.SkillDao;
-import ro.ubb.models.Skill;
+import ro.ubb.interfaces.ProfileProjectDao;
+import ro.ubb.models.ProfileProject;
 import ro.ubb.utilities.DatabaseConnection;
 
 import java.sql.*;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class SkillDaoImpl implements GenericDao, SkillDao {
-
+public class ProfileProjectDaoImpl implements GenericDao, ProfileProjectDao {
     @Override
-    public Skill find(int id) throws DbException {
+    public ProfileProject find(int id) throws DbException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -26,42 +22,38 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection connection = databaseConnection.getConnection();
 
-            String querySelect = "SELECT * FROM skills WHERE ID = " + id;
+            String querySelect = "SELECT * FROM profile_project WHERE ID = " + id;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(querySelect);
-
-            int skillID;
-            String skillName;
-            String technologyAreaName;
-            TechnologyArea technologyArea = null;
+            int profileProjectID, profileID, projectID, roleID;
+            boolean finished;
+            ProjectRole projectRole = null;
 
             if (resultSet.next()) {
-                skillID = resultSet.getInt("ID");
-                skillName = resultSet.getString("Skill_Name");
+                profileProjectID = resultSet.getInt("ID");
+                profileID = resultSet.getInt("ID_Profile");
+                projectID = resultSet.getInt("ID_Project");
+                finished = resultSet.getBoolean("Finished");
+                roleID = resultSet.getInt("ID_Role");
 
-                technologyAreaName = resultSet.getString("Technologies_Area");
-                TechnologyArea[] technologyAreas = TechnologyArea.values();
-                for (TechnologyArea area : technologyAreas) {
-                    if (area.getTechnologyArea().equals(technologyAreaName)) {
-                        technologyArea = area;
+                ProjectRole[] projectRoles = ProjectRole.values();
+                for (ProjectRole pR : projectRoles){
+                    if (pR.getId() == roleID) {
+                        projectRole = pR;
                     }
                 }
             } else
                 return null;
 
-            Skill skill = new Skill();
-            skill.setId(skillID);
-            skill.setSkillName(skillName);
-            skill.setTechnologyArea(technologyArea);
+            return new ProfileProject(profileProjectID, profileID, projectID, finished, projectRole);
 
-            return skill;
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
     }
 
     @Override
-    public Skill save(Object entity) throws DbException {
+    public ProfileProject save(Object entity) throws DbException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -72,17 +64,19 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection connection = databaseConnection.getConnection();
 
-            Skill skill = (Skill) entity;
+            ProfileProject profileProject = (ProfileProject) entity;
 
-            String queryInsert = "INSERT INTO skills(Skill_Name,Technologies_Area) " +
-                    "VALUES (?,?);";
+            String queryInsert = "INSERT INTO Profile_Project (ID_Profile, ID_Project, Finished, ID_Role) " +
+                    "VALUES (?,?,?,?);";
             PreparedStatement statement = connection.prepareStatement(queryInsert);
-            statement.setString(1, skill.getSkillName());
-            statement.setString(2, skill.getTechnologyArea().getTechnologyArea());
+            statement.setInt(1, profileProject.getIdProfile());
+            statement.setInt(2, profileProject.getIdProject());
+            statement.setBoolean(3, profileProject.isFinished());
+            statement.setInt(4,profileProject.getProjectRole().getId());
             int result = statement.executeUpdate();
 
             if (result == 1)
-                return skill;
+                return profileProject;
             else
                 return null;
         } catch (SQLException sqlException) {
@@ -91,7 +85,7 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
     }
 
     @Override
-    public Skill delete(int id) throws DbException {
+    public ProfileProject delete(int id) throws DbException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -102,14 +96,14 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection connection = databaseConnection.getConnection();
 
-            String queryDelete = "DELETE FROM skills WHERE ID = ?";
+            String queryDelete = "DELETE FROM Profile_Project WHERE ID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(queryDelete);
             preparedStatement.setInt(1, id);
-            Skill skill = find(id);
+            ProfileProject profileProject = find(id);
             int result = preparedStatement.executeUpdate();
 
             if (result == 1)
-                return skill;
+                return profileProject;
             else
                 return null;
         } catch (SQLException sqlException) {
@@ -118,7 +112,7 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
     }
 
     @Override
-    public Skill update(Object entity) throws DbException {
+    public ProfileProject update(Object entity) throws DbException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -129,30 +123,24 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection connection = databaseConnection.getConnection();
 
-            Skill skill = (Skill) entity;
+            ProfileProject profileProject = (ProfileProject) entity;
 
-            String queryUpdate = "UPDATE Skills SET Skill_Name = ?, " +
-                    "Technologies_Area = ? WHERE ID = ?";
+            String queryUpdate = "UPDATE Profile_Project SET ID_Profile = ?, " +
+                    "ID_Project = ?, Finished = ?, ID_Role = ? WHERE ID = ?";
             PreparedStatement statement = connection.prepareStatement(queryUpdate);
-            statement.setString(1, skill.getSkillName());
-            statement.setString(2, skill.getTechnologyArea().getTechnologyArea());
-            statement.setInt(3, skill.getId());
+            statement.setInt(1, profileProject.getIdProfile());
+            statement.setInt(2, profileProject.getIdProject());
+            statement.setBoolean(3, profileProject.isFinished());
+            statement.setInt(4, profileProject.getProjectRole().getId());
+            statement.setInt(5, profileProject.getId());
             int result = statement.executeUpdate();
 
             if (result == 1)
-                return skill;
+                return profileProject;
             else
                 return null;
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
-    }
-
-    @Override
-    public List<String> getAllTechnologyAreas() {
-        return Stream.of(TechnologyArea
-                .values())
-                .map(TechnologyArea::getTechnologyArea)
-                .collect(Collectors.toList());
     }
 }
