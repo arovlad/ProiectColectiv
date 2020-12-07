@@ -8,6 +8,9 @@ import ro.ubb.models.Skill;
 import ro.ubb.utilities.DatabaseConnection;
 
 import java.sql.*;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SkillDaoImpl implements GenericDao, SkillDao {
 
@@ -143,5 +146,13 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
+    }
+
+    @Override
+    public List<String> getAllTechnologyAreas() {
+        return Stream.of(TechnologyArea
+                .values())
+                .map(TechnologyArea::getTechnologyArea)
+                .collect(Collectors.toList());
     }
 }
