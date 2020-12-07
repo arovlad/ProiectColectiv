@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { UsersComponent } from './users/users.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { AdminComponent } from './admin/admin.component';
+import { ProjectsComponent } from './users/projects/projects.component';
 
 @NgModule({
-  declarations: [UsersComponent, ProjectsComponent, AdminComponent],
+  declarations: [UsersComponent, AdminComponent, ProjectsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule
   ],
   exports: [
     UsersComponent,
-    ProjectsComponent,
     AdminComponent
   ]
 })
