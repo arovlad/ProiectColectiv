@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
             logInResponse.setLogInResult(WRONG_CREDENTIALS);
             logInResponse.setUserRoleId(-1);
             logInResponse.setNrRemainigAttempts(-1);
+            logInResponse.setId(-1);
             return logInResponse;
         }
 
@@ -43,18 +44,22 @@ public class UserServiceImpl implements UserService {
                 logInResponse.setLogInResult(SUCCESS);
                 logInResponse.setUserRoleId(user.getId_role());
                 logInResponse.setNrRemainigAttempts(user.getRemaining_attempts());
+                logInResponse.setId(user.getId());
             } else {
                 logInResponse.setLogInResult(USER_IS_LOCKED);
                 logInResponse.setUserRoleId(user.getId_role());
                 logInResponse.setNrRemainigAttempts(0);
+                logInResponse.setId(user.getId());
             }
             return logInResponse;
+        }else{
+            logInResponse.setLogInResult(WRONG_CREDENTIALS);
+            logInResponse.setUserRoleId(user.getId_role());
+            userDao.decrementAttempts(user.getId());
+            logInResponse.setNrRemainigAttempts(user.getRemaining_attempts());
+            logInResponse.setId(user.getId());
+            return logInResponse;
         }
-
-        logInResponse.setLogInResult(WRONG_CREDENTIALS);
-        logInResponse.setUserRoleId(-1);
-        logInResponse.setNrRemainigAttempts(-1);
-        return logInResponse;
 
     }
     public RegisterResponse register(String username, String email, String password) throws DbException {
