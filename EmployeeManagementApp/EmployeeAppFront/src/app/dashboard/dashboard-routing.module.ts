@@ -3,11 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UsersComponent } from './users/users.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 const routes: Routes = [
   { path: 'dashboard/admin', component: AdminComponent },
   { path: 'dashboard/projects', component: ProjectsComponent },
-  { path: 'dashboard/users', component: UsersComponent}
+  { path: 'dashboard/users', component: UsersComponent},
+  { path: 'dashboard/navbar', component: NavbarComponent},
+  {path: 'dashboard/profile', component: ProfileComponent},
+  { path: 'dashboard/create-project', component: CreateProjectComponent}
 ];
 
 @NgModule({
