@@ -1,0 +1,71 @@
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3 mt-4">
+    <div class="w-50 p-3" style="background-color: #eee;">
+      <h3>Add new skill</h3>
+      <form>
+        <div>
+          <p >Hello user <b>XY</b></p>
+        </div>
+        <div class="form-group">
+          <label for="skillName">Skill name: </label>
+          <input [(ngModel)]="skillname" type="text" name="skillname"
+                 class="form-control"
+                 id="skillName"
+                 placeholder="insert skill name">
+          <div class="message">
+          <a  *ngIf="errMessageSkillName === 1 " >Field skill name is empty<br> </a>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="skillLevel">Skill level  : </label>
+          <select [(ngModel)]="skillLevel" id="skillLevel" name="skillLevel">
+            <option value="" disabled selected>Choose...</option>
+            <option  value="1"> 1 </option>
+            <option value="2"> 2 </option>
+            <option value="3"> 3 </option>
+            <option value="4"> 4 </option>
+            <option value="5"> 5 </option>
+
+
+          </select>
+
+          <div class="message">
+            <a  *ngIf="errMessageLevel === 1 " >Field skill level not selected<br> </a>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+
+          <label for="technologyAreas" >Technology Area  : </label>
+          <select [(ngModel)]="techArea" id="technologyAreas" name="techarea"  >
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let tech of techAreas" [value]="tech">{{tech}}
+
+            </option>
+
+
+          </select>
+          <div class="message">
+          <a  *ngIf="errMessageArea === 1 " >Field technology area not selected<br> </a>
+          </div>
+        </div>
+
+
+<br>
+
+
+
+
+
+        <button type="submit"
+                class="btn btn-primary" (click)="saveSkill()">save skill <i class="fas fa-sign-in-alt"></i></button>
+
+
+      </form>
+    </div>
+  </div></div>
