@@ -3,3 +3,4 @@ export interface ILoginInformation {
   nrRemainigAttempts: number;
   userRoleId: number;
 }
+

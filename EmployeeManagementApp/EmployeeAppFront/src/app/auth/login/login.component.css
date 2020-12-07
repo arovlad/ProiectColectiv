@@ -7,3 +7,7 @@ div.form-group{
   alignment: center;
 }
 
+.message {
+  color:red;
+}
+
