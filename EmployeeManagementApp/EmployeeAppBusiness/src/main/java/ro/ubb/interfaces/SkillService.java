@@ -10,4 +10,6 @@ public interface SkillService {
     List<String> getAllTechnologyAreas();
 
     SkillDto save(Object entity) throws DbException;
+
+    public int findByName(String name) throws DbException;
 }
