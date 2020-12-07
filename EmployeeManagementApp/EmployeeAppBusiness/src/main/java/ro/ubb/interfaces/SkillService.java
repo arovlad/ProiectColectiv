@@ -11,5 +11,6 @@ public interface SkillService {
 
     SkillDto save(Object entity) throws DbException;
 
-    public int findByName(String name) throws DbException;
+    int findByName(String name) throws DbException;
+
 }

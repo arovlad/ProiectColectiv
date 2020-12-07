@@ -9,5 +9,6 @@ public interface SkillDao {
 
     List<String> getAllTechnologyAreas();
 
-    public Skill findByName(String name) throws DbException;
+    Skill findByName(String name) throws DbException;
+
 }
