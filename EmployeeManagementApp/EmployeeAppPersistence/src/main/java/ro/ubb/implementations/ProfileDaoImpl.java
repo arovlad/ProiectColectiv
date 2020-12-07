@@ -1,5 +1,6 @@
 package ro.ubb.implementations;
 
+import ro.ubb.constants.TechnologyArea;
 import ro.ubb.exceptions.DbException;
 import ro.ubb.interfaces.GenericDao;
 import ro.ubb.interfaces.ProfileDao;
@@ -7,6 +8,8 @@ import ro.ubb.models.Profile;
 import ro.ubb.utilities.DatabaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileDaoImpl implements GenericDao, ProfileDao {
 
@@ -136,6 +139,39 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
                 return profile;
             else
                 return null;
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
+    }
+
+    @Override
+    public List<Profile> getAllProfiles(TechnologyArea technologyArea) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+
+            List<Profile> profiles = new ArrayList<Profile>();
+
+            String query = "SELECT p.ID FROM profile p JOIN profile_skills ps ON p.ID = ps.ID_Profile JOIN skills s ON ps.ID_Skill = s.ID WHERE s.Technologies_Area =  ?";
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, technologyArea.getTechnologyArea());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()){
+                int profileID = resultSet.getInt("ID");
+                Profile profile = find(profileID);
+                profiles.add(profile);
+            }
+
+            return profiles;
+
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
