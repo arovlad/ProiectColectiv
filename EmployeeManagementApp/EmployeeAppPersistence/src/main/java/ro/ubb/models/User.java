@@ -75,4 +75,5 @@ public class User {
     public void setRemaining_attempts(int remaining_attempts) {
         this.remaining_attempts = remaining_attempts;
     }
+
 }

@@ -225,4 +225,15 @@ public class UserDaoImpl implements GenericDao, UserDao {
                 return false;
         }
     }
+
+    @Override
+    public void decrementAttempts(int id) throws DbException {
+        User user=find(id);
+        if(user.getRemaining_attempts()>0){
+            int nrRemainingAt=user.getRemaining_attempts()-1;
+            user.setRemaining_attempts(nrRemainingAt);
+            update(user);
+        }
+
+    }
 }
