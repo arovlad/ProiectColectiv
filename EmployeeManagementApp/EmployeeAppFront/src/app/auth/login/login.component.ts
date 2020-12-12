@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { ILoginInformation} from './loginInformation';
+import { ILoginInformation } from './loginInformation';
 
 @Component({
   selector: 'app-login',
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
         else {
             localStorage.setItem('role', String(loginInfo.logInResult));
-            // localStorage.setItem('id', String(loginInfo.userId));
+            localStorage.setItem('id', String(loginInfo.id));
 
             if (loginInfo.userRoleId === 1){ // employee
               this.router.navigate(['/dashboard/projects']);
