@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { ILoginInformation } from './loginInformation';
+import { ILoginInformation} from './loginInformation';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,12 @@ import { ILoginInformation } from './loginInformation';
 export class LoginComponent implements OnInit {
   username = '';
   password = '';
-  message = '';
+  message1 = 0;
+  message2 = "";
+  message3 = 0;
+message4=0;
+message5=0;
+
 
   constructor(private loginService: LoginService, private router: Router) {
   }
@@ -24,10 +29,43 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
  Login(): void {
+
+    if(this.password==''){
+      this.message5=1;
+    }
+    else{
+      this.message5=0;
+
+    }
+   if(this.username==''){
+     this.message4=1;
+   }
+   else{
+     this.message4=0;
+   }
     this.loginService.Login(this.username, this.password).subscribe(
       response => {
+this.message1=0;
+this.message3=0;
+this.message2="";
+
+
+
         const loginInfo: ILoginInformation = response.response;
-        if (loginInfo.logInResult === 3){
+        if(loginInfo.logInResult == 1 ){
+
+          this.message1=1;
+
+          this.message2=loginInfo.nrRemainigAttempts.toString();
+
+
+        }
+        else if(loginInfo.logInResult == 2){
+        this.message3=1;
+        }
+        else
+        //if (loginInfo.logInResult === 3)
+          {
           if (loginInfo.userRoleId === 1){ // employee
             this.router.navigate(['/dashboard/projects']);
           }
