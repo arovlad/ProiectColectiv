@@ -11,10 +11,12 @@ import { NavbarComponent} from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import {ProjectsComponent} from './users/projects/projects.component';
+import { AddregionsComponent } from './regions/addregions/addregions.component';
 
 @NgModule({
-  // tslint:disable-next-line:max-line-length
-  declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent, ProjectsComponent, AddskillComponent, UserComponent],
+
+  declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
+    ProjectsComponent, AddskillComponent, UserComponent, AddregionsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
