@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SkillService } from '../../../services/skill.service';
 import {Router} from "@angular/router";
 import {ILoginInformation} from "../../../auth/login/loginInformation";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-addskill',
@@ -19,6 +20,11 @@ export class AddskillComponent implements OnInit {
   errMessageArea=0;
   errMessageSkillName=0;
 
+  idSkill=0;
+  idUser=1;
+  skillKnowledgeLevel=0;
+
+
 
 
 
@@ -30,47 +36,81 @@ export class AddskillComponent implements OnInit {
     this.getAllTechAreas();
 
   }
-saveSkill() {
-  this.errMessageLevel =0;
-  this.errMessageArea=0;
-  this.errMessageSkillName=0;
-    if((this.skillUsed == false) && (this.skillname!='') && (this.techArea != '') ) {
+  saveSkill() {
+   this.errMessageLevel = 0;
+   this.errMessageArea = 0;
+   this.errMessageSkillName = 0;
 
-      this.skillService.saveSkill(this.skillname, this.techArea).subscribe(
-        response => {
-          alert("new skill added to database!");
-          this.username='';
-          this.skillname='';
-          this.techArea='';
-        },
-        error => {
-          alert('There was an error');
-        }
-      );
-    }
-    else if (this.skillUsed == true){
-      alert("skill in database")
-    }
-     if(this.techArea==''){
-      this.errMessageArea=1;
-    }
-    if(this.skillname==''){
-      this.errMessageSkillName=1;
-    }
-    if(this.skillLevel==''){
-      this.errMessageLevel=1;
-    }
+    this.skillService.idSKill(this.skillname).subscribe(value => {
 
-}
+     this.idSkill = value;
+     alert(this.idSkill);
+     if ((this.idSkill == -1) && (this.skillname != '') && (this.techArea != '')) {
+alert("enter if statment");
+        this.skillService.saveSkill(this.skillname, this.techArea).subscribe(
+         response => {
+           alert("new skill added to Skills table!");
+           this.skillService.idSKill(this.skillname).subscribe(data=>{
+             this.idSkill=data;
+             alert("second find");
+             alert(this.idSkill);
+             this.skillKnowledgeLevel= + this.skillLevel;
+             alert("skill level: ");
+             alert(this.skillKnowledgeLevel);
+             alert("userID=");
+             alert(this.idUser);
+this.skillService.saveProfileSkill(this.idUser,this.idSkill,this.skillKnowledgeLevel).subscribe(dataa=>{
+  alert("saved in profile skills");
+},error=>{
+  alert("error");
+})
+
+
+
+           },error=>{
+             alert("error");
+           })
+
+         },
+         error => {
+           alert('There was an error');
+         }
+       );
+
+
+
+
+     }
+
+   }, error => {
+     alert("wrong");
+   });
+
+
+ }
 
 
 
   getAllTechAreas() {
     this.skillService.getAllTechAreas().subscribe(
-      (data) => {
+      (dataaa) => {
 
-        this.techAreas = data;
+        this.techAreas = dataaa;
         console.log(this.techAreas);
+
+      },
+      (error) => {
+
+        console.log("error");
+      }
+    );
+  }
+  async getId(){
+    this.skillService.idSKill(this.skillname).subscribe(
+      (dataa) => {
+        this.idSkill=dataa;
+        alert("masodik");
+        alert(this.idSkill);
 
       },
       (error) => {
