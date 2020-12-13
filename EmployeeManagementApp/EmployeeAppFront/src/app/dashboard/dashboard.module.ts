@@ -11,12 +11,15 @@ import { NavbarComponent} from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import {ProjectsComponent} from './users/projects/projects.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AddSkillsComponent } from './add-skills/add-skills.component';
 import { AddregionsComponent } from './regions/addregions/addregions.component';
 
 @NgModule({
 
   declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
-    ProjectsComponent, AddskillComponent, UserComponent, AddregionsComponent],
+    ProjectsComponent, MyProfileComponent, AddregionsComponent, AddSkillsComponent, UserComponent, AddregionsComponent],
+
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -24,10 +27,12 @@ import { AddregionsComponent } from './regions/addregions/addregions.component';
   ],
   exports: [
     UsersComponent,
+    ProjectsComponent,
     AdminComponent,
     NavbarComponent,
     ProfileComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    AddSkillsComponent
   ]
 })
 export class DashboardModule { }

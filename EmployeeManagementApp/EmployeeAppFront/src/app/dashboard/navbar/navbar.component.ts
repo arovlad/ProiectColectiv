@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ILoginInformation} from '../../auth/login/loginInformation';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +7,12 @@ import {ILoginInformation} from '../../auth/login/loginInformation';
 })
 export class NavbarComponent implements OnInit {
   isVisible = false;
-  var = '1';
+
   constructor() { }
 
   ngOnInit(): void {
+    if ( localStorage.getItem('role') === '2') {
+      this.isVisible = true;
+    }
   }
-
 }

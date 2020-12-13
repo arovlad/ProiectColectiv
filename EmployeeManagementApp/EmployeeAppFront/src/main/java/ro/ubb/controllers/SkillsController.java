@@ -19,6 +19,13 @@ public class SkillsController {
     return new SkillServiceImpl().getAllTechnologyAreas();
   }
 
+  @GET
+  @Path("/findbyname")
+  @Produces(MediaType.APPLICATION_JSON)
+  public int findByName(@QueryParam("name") String name) throws DbException {
+    return new SkillServiceImpl().findByName(name);
+  }
+
   @POST
   @Path("/save")
   @Consumes(MediaType.APPLICATION_JSON)

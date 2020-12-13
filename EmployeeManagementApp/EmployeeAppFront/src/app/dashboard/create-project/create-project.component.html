@@ -5,12 +5,12 @@
       <form>
         <div class="form-group">
           <label for="projectName">Project Name</label>
-          <input type="text" name="projectName"
+          <input [(ngModel)]="projectName" type="text"
                  class="form-control"
                  id="projectName"
                  placeholder="Enter project name">
           <label for="customerName">Customer Name</label>
-          <input type="text" name="cutstomerName"
+          <input [(ngModel)]="customerName" type="text"
                  class="form-control"
                  id="customerName"
                  placeholder="Enter customer name">
@@ -18,11 +18,11 @@
         <form action="/action_page.php" >
           <div>
             <label for="start">Start: </label>
-            <input type="date" id="start" name="start">
+            <input [(ngModel)]="start" type="date" id="start">
           </div>
           <div>
             <label for="end">End: </label>
-            <input type="date" id="end" name="end">
+            <input [(ngModel)]="end" type="date" id="end">
           </div>
 
         </form>
@@ -49,11 +49,11 @@
           </select>
         </div>
         <div class="divDescription">
-          <textarea class="description" rows="4"  placeholder="Project description" required></textarea>
+          <textarea [(ngModel)]="description" class="description" rows="4"  placeholder="Project description" required></textarea>
         </div>
         <div class="divButton">
-          <button type="submit">ADD PROJECT</button>
-          <button type="submit">BACK</button>
+          <button type="submit" class="btn btn-primary inline" >ADD PROJECT<i class="fas fa-sign-in-alt"></i></button>
+          <button type="submit" class="btn btn-primary inline" >BACK</button>
         </div>
       </form>
     </div>
