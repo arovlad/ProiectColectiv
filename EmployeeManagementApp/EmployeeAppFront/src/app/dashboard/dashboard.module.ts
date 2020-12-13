@@ -18,7 +18,7 @@ import { AddregionsComponent } from './regions/addregions/addregions.component';
 @NgModule({
 
   declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
-    ProjectsComponent, MyProfileComponent, AddregionsComponent, AddSkillsComponent, UserComponent, AddregionsComponent],
+    ProjectsComponent, MyProfileComponent, AddregionsComponent, AddSkillsComponent, UserComponent, AddregionsComponent, AddskillComponent],
 
   imports: [
     CommonModule,
