@@ -9,9 +9,13 @@ import { NavbarComponent} from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import {FormsModule} from '@angular/forms';
+import {ProjectsComponent} from './users/projects/projects.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AddSkillsComponent } from './add-skills/add-skills.component';
 
 @NgModule({
-  declarations: [UsersComponent, ProjectsComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent],
+  declarations: [UsersComponent, AdminComponent, NavbarComponent,
+    ProfileComponent, CreateProjectComponent, ProjectsComponent, MyProfileComponent, AddSkillsComponent],
 
   imports: [
     CommonModule,
@@ -20,11 +24,11 @@ import {FormsModule} from '@angular/forms';
   ],
   exports: [
     UsersComponent,
-    ProjectsComponent,
     AdminComponent,
     NavbarComponent,
     ProfileComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    AddSkillsComponent
   ]
 })
 export class DashboardModule { }

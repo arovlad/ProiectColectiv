@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-project.component.css']
 })
 export class CreateProjectComponent implements OnInit {
-  industry: any;
-  roleName: any;
 
+  projectName = '';
+  customerName = '';
+  industry = '';
+  roleName = '';
+  start = '';
+  end = '';
+  description = '';
+// trebe getAllIndustries si getAllRoles
   constructor() { }
 
   ngOnInit(): void {
