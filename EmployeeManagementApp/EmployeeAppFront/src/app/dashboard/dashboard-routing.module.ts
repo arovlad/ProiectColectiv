@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'dashboard/create-project', component: CreateProjectComponent},
   { path: 'dashboard/users', component: UsersComponent},
   { path: 'dashboard/my-profile', component: MyProfileComponent},
-  {path: 'dashboard/add-skills', component: AddSkillsComponent}
+  {path: 'dashboard/add-skills', component: AddSkillsComponent},
   { path: 'dashboard/user/addskill', component: AddskillComponent}
 ];
 
