@@ -1,0 +1,34 @@
+package ro.ubb.services;
+
+import ro.ubb.constants.TechnologyArea;
+import ro.ubb.exceptions.DbException;
+import ro.ubb.implementations.ProfileDaoImpl;
+import ro.ubb.interfaces.ProfileService;
+import ro.ubb.models.FilterByTechnologyResponse;
+import ro.ubb.models.Profile;
+
+import java.util.List;
+
+public class ProfileServiceImpl implements ProfileService {
+    @Override
+    public FilterByTechnologyResponse filterByTechnology(String technology) throws DbException {
+        ProfileDaoImpl profileDao = new ProfileDaoImpl();
+
+        TechnologyArea myTechnologyArea = null;
+
+        TechnologyArea[] technologyAreas = TechnologyArea.values();
+        for (TechnologyArea area : technologyAreas) {
+            if (area.getTechnologyArea().equals(technology)) {
+                myTechnologyArea = area;
+            }
+        }
+
+        List<Profile> profiles = profileDao.getAllProfiles(myTechnologyArea);
+        boolean profilesFound = !profiles.isEmpty();
+        FilterByTechnologyResponse response = new FilterByTechnologyResponse();
+        response.setProfilesFound(profilesFound);
+        response.setProfileList(profiles);
+
+        return response;
+    }
+}

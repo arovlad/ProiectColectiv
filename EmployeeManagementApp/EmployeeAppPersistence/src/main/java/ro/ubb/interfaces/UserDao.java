@@ -23,4 +23,6 @@ public interface UserDao {
      */
     boolean isLocked(String usernameOrEmail) throws DbException;
 
+    void decrementAttempts(int id)throws DbException;
+
 }
