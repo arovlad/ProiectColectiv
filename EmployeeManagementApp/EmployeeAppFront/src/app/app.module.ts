@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthModule} from './auth/auth.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {LoginService} from './services/login.service';
+import {ProjectsService} from './services/projects.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {LoginService} from './services/login.service';
     DashboardModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, ProjectsService],
   bootstrap: [AppComponent]
 })
 
