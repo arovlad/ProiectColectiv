@@ -3,6 +3,16 @@ package ro.ubb.models;
 public class Project {
     private int id;
     private String name;
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "name='" + name + '\'' +
+                ", duration=" + duration +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     private int id_customer;
     private int duration;
     private String description;
@@ -20,6 +30,14 @@ public class Project {
         this.id_industry=id_industry;
 
     }
+
+    public Project(String name,int duration, String description){
+        this.name=name;
+        this.duration=duration;
+        this.description=description;
+
+    }
+
     public Project(int id,String name,int duration, String description,int id_industry){
         this.id=id;
         this.name=name;

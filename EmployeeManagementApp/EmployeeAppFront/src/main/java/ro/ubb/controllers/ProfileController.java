@@ -2,6 +2,7 @@ package ro.ubb.controllers;
 
 import ro.ubb.exceptions.DbException;
 import ro.ubb.models.FilterByTechnologyResponse;
+import ro.ubb.models.GetAllProjectsFromUserResponse;
 import ro.ubb.services.ProfileServiceImpl;
 
 import javax.ws.rs.*;
@@ -22,4 +23,6 @@ public class ProfileController {
   public FilterByTechnologyResponse filterByTechnology(@QueryParam("technology") String technology) throws DbException {
     return profileService.filterByTechnology(technology);
   }
+
+
 }
