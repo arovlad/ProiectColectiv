@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard/admin', component: AdminComponent },
   { path: 'dashboard/users', component: UsersComponent},
   { path: 'dashboard/user/addskill', component: AddskillComponent},
-  {path:'dashboard/admin/CrudTechnologyArea',component:CrudTechnologyAreaComponent }
+  {path:'dashboard/admin/CrudTechnologyArea',component:CrudTechnologyAreaComponent },
   { path: 'dashboard/navbar', component: NavbarComponent},
   {path: 'dashboard/profile', component: ProfileComponent},
   { path: 'dashboard/create-project', component: CreateProjectComponent},
