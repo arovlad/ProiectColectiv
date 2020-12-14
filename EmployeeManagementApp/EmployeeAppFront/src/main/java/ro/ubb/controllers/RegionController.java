@@ -22,7 +22,7 @@ public class RegionController {
     return new RegionServiceImpl().save(RegionDtoMapper.mapRegionDtoToRegion(regionDto));
   }
 
-  @GET
+  @DELETE
   @Path("/delete")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
