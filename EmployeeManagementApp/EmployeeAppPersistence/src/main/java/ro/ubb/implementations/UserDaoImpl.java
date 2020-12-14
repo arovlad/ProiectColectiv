@@ -40,7 +40,7 @@ public class UserDaoImpl implements GenericDao, UserDao {
                 return null;
 
             return new User(id_user, username_user, email_user, password_user, id_role_user,
-                remaining_attempts_user);
+                    remaining_attempts_user);
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
@@ -227,6 +227,7 @@ public class UserDaoImpl implements GenericDao, UserDao {
     }
 
     @Override
+<<<<<<< HEAD
     public void decrementAttempts(int id) throws DbException {
         User user=find(id);
         if(user.getRemaining_attempts()>0){
@@ -236,4 +237,31 @@ public class UserDaoImpl implements GenericDao, UserDao {
         }
 
     }
+=======
+    public User updateAttempts(String usernameOrEmail) throws DbException, SQLException {
+        User user = findByUsername(usernameOrEmail);
+        if (user != null) {
+
+            if (user.getRemaining_attempts() > 0) {
+
+                DatabaseConnection databaseConnection = new DatabaseConnection();
+                Connection connection = databaseConnection.getConnection();
+                String queryUpdate = "UPDATE userlogin SET Remaining_Attempts=? WHERE ID = ?";
+                PreparedStatement statement = connection.prepareStatement(queryUpdate);
+                statement.setString(1, "" + (user.getRemaining_attempts() - 1));
+                statement.setString(2, "" + user.getId());
+                int result = statement.executeUpdate();
+                if (result == 1) {
+                    return user;
+                } else {
+                    return null;
+                }
+            } else {
+                return user;
+            }
+        }
+        return null;
+    }
+
+>>>>>>> 28750b2e (added function)
 }
