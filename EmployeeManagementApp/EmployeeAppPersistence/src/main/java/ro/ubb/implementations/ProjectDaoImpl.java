@@ -189,7 +189,7 @@ public class ProjectDaoImpl implements GenericDao, ProjectDao {
 
 
             List<Project> projects=new ArrayList<>();
-            String query="SELECT proj.Project_Name,proj.Description,proj.Duration FROM profile prof join profile_project pp on prof.ID=pp.ID_Profile join project_role pr on pp.ID_Role=pr.ID join project proj on pp.ID_Project=proj.ID join industry i on proj.ID_Industry=i.ID join customer c on proj.ID_Customer=c.ID where prof.ID_User=?";
+            String query="SELECT proj.Project_Name,proj.Description,proj.Duration FROM profile prof join profile_project pp on prof.ID=pp.ID_Profile join project proj on pp.ID_Project=proj.ID join customer c on proj.ID_Customer=c.ID where prof.ID_User=?";
             PreparedStatement preparedStatement=connection.prepareStatement(query);
             preparedStatement.setInt(1,id);
             ResultSet resultSet=preparedStatement.executeQuery();
