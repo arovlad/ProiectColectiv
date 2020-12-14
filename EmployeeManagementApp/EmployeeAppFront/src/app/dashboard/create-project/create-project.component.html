@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 mt-4">
+    <div class="w-50 p-3" style="background-color: #eee;">
+      <h3>Create Project</h3>
+      <form>
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input [(ngModel)]="projectName" type="text"
+                 class="form-control"
+                 id="projectName"
+                 placeholder="Enter project name">
+          <label for="customerName">Customer Name</label>
+          <input [(ngModel)]="customerName" type="text"
+                 class="form-control"
+                 id="customerName"
+                 placeholder="Enter customer name">
+        </div>
+        <form action="/action_page.php" >
+          <div>
+            <label for="start">Start: </label>
+            <input [(ngModel)]="start" type="date" id="start">
+          </div>
+          <div>
+            <label for="end">End: </label>
+            <input [(ngModel)]="end" type="date" id="end">
+          </div>
+
+        </form>
+        <div class="form-group">
+          <label for="industry">
+            Industry
+          </label>
+          <select id="industry" name="industry" [(ngModel)]="industry" class="form-control">
+            <option>Industry1</option>
+            <option>Industry2</option>
+            <option>Industry3</option>
+            <option>Industry4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="roleName">
+            Role Name
+          </label>
+          <select id="roleName" name="roleName" [(ngModel)]="roleName" class="form-control">
+            <option>Name1</option>
+            <option>Name2</option>
+            <option>Name3</option>
+            <option>Name4</option>
+          </select>
+        </div>
+        <div class="divDescription">
+          <textarea [(ngModel)]="description" class="description" rows="4"  placeholder="Project description" required></textarea>
+        </div>
+        <div class="divButton">
+          <button type="submit" class="btn btn-primary inline" >ADD PROJECT<i class="fas fa-sign-in-alt"></i></button>
+          <button type="submit" class="btn btn-primary inline" >BACK</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

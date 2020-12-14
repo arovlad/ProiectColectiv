@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Technology Area Name</th>
+    <th scope="col">delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let area of techAreas">
+    <td></td>
+    <td>{{area}}</td>
+    <td><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+  </tr>
+  </tbody>
+</table>
