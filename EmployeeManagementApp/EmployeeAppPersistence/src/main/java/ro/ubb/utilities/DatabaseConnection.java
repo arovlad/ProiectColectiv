@@ -12,7 +12,7 @@ public class DatabaseConnection {
     private Connection databaseConnection;
 
     public DatabaseConnection() {
-        this.url = "jdbc:mysql://127.0.0.1:3307/proiectcolectiv";
+        this.url = "jdbc:mysql://127.0.0.1:3306/proiectcolectiv";
         this.user = "admin";
         this.password = "admin123";
         this.databaseConnection = null;
