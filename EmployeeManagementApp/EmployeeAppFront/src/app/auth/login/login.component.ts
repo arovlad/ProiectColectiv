@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         }
 
         else {
-            localStorage.setItem('role', String(loginInfo.logInResult));
+            localStorage.setItem('role', String(loginInfo.userRoleId));
             localStorage.setItem('id', String(loginInfo.id));
 
             if (loginInfo.userRoleId === 1){ // employee

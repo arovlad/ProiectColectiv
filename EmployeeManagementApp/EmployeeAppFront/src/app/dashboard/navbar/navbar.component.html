@@ -12,7 +12,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="http://localhost:4200/dashboard/profile">Profile <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active" [style.display]="isVisible ? 'block' : 'none'">
+      <li class="nav-item active" *ngIf="isVisible">
         <a class="nav-link" href="http://localhost:4200/dashboard/admin" aria-disabled="true">Admin</a>
       </li>
     </ul>

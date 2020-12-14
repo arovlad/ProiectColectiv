@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {AddSkillsComponent} from './add-skills/add-skills.component';
+import {RegionsComponent} from './admin/regions/regions.component';
 
 const routes: Routes = [
   { path: 'dashboard/admin', component: AdminComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'dashboard/my-profile', component: MyProfileComponent},
   {path: 'dashboard/add-skills', component: AddSkillsComponent},
   { path: 'dashboard/user/addskill', component: AddskillComponent},
+  { path: 'dashboard/admin/regions', component: RegionsComponent}
 
 ];
 
