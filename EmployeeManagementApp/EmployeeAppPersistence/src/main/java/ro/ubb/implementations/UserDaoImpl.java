@@ -61,7 +61,7 @@ public class UserDaoImpl implements GenericDao, UserDao {
             User user = (User) entity;
 
             String queryInsert = "INSERT INTO userlogin(username,email,password,id_role) VALUES (?,?,?,?); ";
-            String encryptedPass=SHAEncryption.get_SHA1(user.getPassword());
+            String encryptedPass = SHAEncryption.get_SHA1(user.getPassword());
             PreparedStatement statement = connection.prepareStatement(queryInsert);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
@@ -120,7 +120,7 @@ public class UserDaoImpl implements GenericDao, UserDao {
             User user = (User) entity;
 
             String queryUpdate = "UPDATE userlogin SET username = ?, email = ?, password = ?, id_role = ?, remaining_attempts = ? WHERE ID = ?";
-            String encryptedPass=SHAEncryption.get_SHA1(user.getPassword());
+            String encryptedPass = SHAEncryption.get_SHA1(user.getPassword());
             PreparedStatement statement = connection.prepareStatement(queryUpdate);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
@@ -227,20 +227,16 @@ public class UserDaoImpl implements GenericDao, UserDao {
     }
 
     @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
     public void decrementAttempts(int id) throws DbException {
-        User user=find(id);
-        if(user.getRemaining_attempts()>0){
-            int nrRemainingAt=user.getRemaining_attempts()-1;
+        User user = find(id);
+        if (user.getRemaining_attempts() > 0) {
+            int nrRemainingAt = user.getRemaining_attempts() - 1;
             user.setRemaining_attempts(nrRemainingAt);
             update(user);
         }
 
     }
-=======
-=======
->>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
+
     public User updateAttempts(String usernameOrEmail) throws DbException, SQLException {
         User user = findByUsername(usernameOrEmail);
         if (user != null) {
@@ -265,9 +261,4 @@ public class UserDaoImpl implements GenericDao, UserDao {
         }
         return null;
     }
-
-<<<<<<< HEAD
->>>>>>> 28750b2e (added function)
-=======
->>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
 }
