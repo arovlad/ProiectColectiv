@@ -13,12 +13,14 @@ import { CreateProjectComponent } from './create-project/create-project.componen
 import {ProjectsComponent} from './users/projects/projects.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddSkillsComponent } from './add-skills/add-skills.component';
-import { AddregionsComponent } from './regions/addregions/addregions.component';
+import { RegionsComponent } from './admin/regions/regions.component';
+
+
 
 @NgModule({
 
   declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
-    ProjectsComponent, MyProfileComponent, AddregionsComponent, AddSkillsComponent, UserComponent, AddregionsComponent],
+    ProjectsComponent, MyProfileComponent, AddskillComponent, AddSkillsComponent, UserComponent, RegionsComponent],
 
   imports: [
     CommonModule,

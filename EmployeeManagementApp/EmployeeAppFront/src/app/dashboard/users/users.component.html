@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Users</a>
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search by technology" aria-label="Search" [(ngModel)]="query">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search by technology" aria-label="Search" [(ngModel)]="query" name="query">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>
   </form>
 </nav>
@@ -16,8 +16,8 @@
   <tbody>
   <tr *ngFor="let element of list">
     <td>{{ element.id }}</td>
-    <td>{{ element.firstName }}</td>
-    <td>{{ element.lastName }}</td>
+    <td>{{ element.first_name }}</td>
+    <td>{{ element.last_name }}</td>
   </tr>
   </tbody>
 </table>

@@ -9,6 +9,6 @@ export class FilterbytechnologyService {
 
   constructor(private http: HttpClient) { }
   get(info: string): Observable<any> {
-    return this.http.get('/EmployeeAppFront_war/rest/profile?technology=' + info);
+    return this.http.get('http://localhost:8080/EmployeeAppFront_war/rest/profile?technology=' + info);
   }
 }
