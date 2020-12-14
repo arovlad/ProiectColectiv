@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('id', String(loginInfo.id));
 
             if (loginInfo.userRoleId === 1){ // employee
-              this.router.navigate(['/dashboard/projects']);
+              this.router.navigate(['/dashboard/users']);
             }
             if (loginInfo.userRoleId === 2){ // admin
               this.router.navigate(['/dashboard/admin']);

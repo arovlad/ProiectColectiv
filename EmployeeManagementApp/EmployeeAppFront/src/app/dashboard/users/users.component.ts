@@ -11,10 +11,7 @@ import {FilterbytechnologyService} from '../../services/filterbytechnology.servi
 })
 export class UsersComponent implements OnInit {
   // searchText = '';
-  public list: UsersInfo[] = [
-    {id: 1, firstName: 'Diana', lastName: 'Balogh'},
-    {id: 2, firstName: 'Lidia', lastName: 'Bartha'}
-  ];
+  public list: UsersInfo[] = [];
   query = '';
   constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService) { }
 
@@ -31,7 +28,7 @@ export class UsersComponent implements OnInit {
   filter(): void {
     this.FilterService.get(this.query).subscribe(response =>
     {
-      this.list = response;
+      this.list = response.profileList;
     });
   }
 }
