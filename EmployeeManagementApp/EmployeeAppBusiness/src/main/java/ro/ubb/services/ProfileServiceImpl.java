@@ -3,9 +3,9 @@ package ro.ubb.services;
 import ro.ubb.constants.TechnologyArea;
 import ro.ubb.exceptions.DbException;
 import ro.ubb.implementations.ProfileDaoImpl;
+import ro.ubb.implementations.ProjectDaoImpl;
 import ro.ubb.interfaces.ProfileService;
-import ro.ubb.models.FilterByTechnologyResponse;
-import ro.ubb.models.Profile;
+import ro.ubb.models.*;
 
 import java.util.List;
 
@@ -31,4 +31,6 @@ public class ProfileServiceImpl implements ProfileService {
 
         return response;
     }
+
+
 }
