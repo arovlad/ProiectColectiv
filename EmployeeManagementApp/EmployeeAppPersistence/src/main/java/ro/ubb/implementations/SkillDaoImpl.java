@@ -155,4 +155,53 @@ public class SkillDaoImpl implements GenericDao, SkillDao {
                 .map(TechnologyArea::getTechnologyArea)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Skill findByName(String name) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+
+            String querySelect = "SELECT * FROM skills WHERE Skill_Name = ?";
+            PreparedStatement statement = connection.prepareStatement(querySelect);
+            statement.setString(1, name);
+            ResultSet result = statement.executeQuery();
+
+            int skillID;
+            String skillName;
+            String technologyAreaName;
+            TechnologyArea technologyArea = null;
+
+            if (result.next()) {
+                skillID = result.getInt("ID");
+                skillName = result.getString("Skill_Name");
+
+                technologyAreaName = result.getString("Technologies_Area");
+                TechnologyArea[] technologyAreas = TechnologyArea.values();
+                for (TechnologyArea area : technologyAreas) {
+                    if (area.getTechnologyArea().equals(technologyAreaName)) {
+                        technologyArea = area;
+                    }
+                }
+            } else
+                return null;
+
+            Skill skill = new Skill();
+            skill.setId(skillID);
+            skill.setSkillName(skillName);
+            skill.setTechnologyArea(technologyArea);
+
+            return skill;
+
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
+    }
+
 }
