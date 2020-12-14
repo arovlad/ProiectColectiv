@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersInfo} from './usersInfo';
+import {HttpClient} from '@angular/common/http';
+import {UsersService} from '../../services/users.service';
+import {FilterbytechnologyService} from '../../services/filterbytechnology.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor() { }
+  // searchText = '';
+  public list: UsersInfo[] = [];
+  query = '';
+  constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService) { }
 
   ngOnInit(): void {
+    this.service.get().subscribe(response =>
+      {
+        this.list = response;
+      },
+      error => {
+        alert('There was an error retrieving the users.');
+      });
   }
 
+  filter(): void {
+    this.FilterService.get(this.query).subscribe(response =>
+    {
+      this.list = response.profileList;
+    });
+  }
 }
