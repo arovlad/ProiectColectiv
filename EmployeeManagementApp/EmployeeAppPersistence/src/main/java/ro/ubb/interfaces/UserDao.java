@@ -22,7 +22,7 @@ public interface UserDao {
      * @return false, if the Account is not blocked, otherwise returns true
      */
     boolean isLocked(String usernameOrEmail) throws DbException;
-
+    
     void decrementAttempts(int id)throws DbException;
 
 }

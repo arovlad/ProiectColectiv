@@ -36,14 +36,20 @@ public class UserServiceImpl implements UserService {
             logInResponse.setUserRoleId(-1);
             logInResponse.setNrRemainigAttempts(-1);
 <<<<<<< HEAD
+<<<<<<< HEAD
             logInResponse.setId(-1);
 =======
+=======
+>>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
 //            try {
 //                User userUpdated = userDao.updateAttempts(usernameOrEmail);
 //            } catch (Exception e) {
 //                e.printStackTrace();
 //            }
+<<<<<<< HEAD
 >>>>>>> 28750b2e (added function)
+=======
+>>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
             return logInResponse;
         }
 

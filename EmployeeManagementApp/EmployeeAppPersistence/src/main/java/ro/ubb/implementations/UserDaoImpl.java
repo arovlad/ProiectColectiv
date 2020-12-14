@@ -228,6 +228,7 @@ public class UserDaoImpl implements GenericDao, UserDao {
 
     @Override
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void decrementAttempts(int id) throws DbException {
         User user=find(id);
         if(user.getRemaining_attempts()>0){
@@ -238,6 +239,8 @@ public class UserDaoImpl implements GenericDao, UserDao {
 
     }
 =======
+=======
+>>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
     public User updateAttempts(String usernameOrEmail) throws DbException, SQLException {
         User user = findByUsername(usernameOrEmail);
         if (user != null) {
@@ -263,5 +266,8 @@ public class UserDaoImpl implements GenericDao, UserDao {
         return null;
     }
 
+<<<<<<< HEAD
 >>>>>>> 28750b2e (added function)
+=======
+>>>>>>> 28750b2e4e8697e7e575732e89d365403f10c09e
 }
