@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SkillService} from "../../../services/skill.service";
+import{TechnologyareaService} from '../../../services/technologyarea.service';
 
 @Component({
   selector: 'app-crud-technology-area',
@@ -8,7 +9,10 @@ import {SkillService} from "../../../services/skill.service";
 })
 export class CrudTechnologyAreaComponent implements OnInit {
   techAreas: Array<any> = [];
-  constructor(private skillService: SkillService) {
+  name="";
+  area="";
+  newName="";
+  constructor(private skillService: SkillService,private technologyService: TechnologyareaService) {
 
   }
 
@@ -29,5 +33,25 @@ export class CrudTechnologyAreaComponent implements OnInit {
         console.log("error");
       }
     );
+  }
+  delete(param: string){
+    this.name=param;
+    alert(this.name);
+    this.technologyService.delete(this.name).subscribe((data)=>{
+      alert("technology area deleted from database");
+    },(error)=>{
+      alert("something went wrong");
+    })
+  }
+  insert(param: string) {
+    this.newName = param;
+    alert(this.newName);
+    this.technologyService.save(this.newName).subscribe((data) => {
+      alert("techology saved in database");
+    },(error)=>{
+      alert("something went worng");
+    })
+
+
   }
 }
