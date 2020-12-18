@@ -14,13 +14,13 @@ import {ProjectsComponent} from './users/projects/projects.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddSkillsComponent } from './add-skills/add-skills.component';
 import { RegionsComponent } from './admin/regions/regions.component';
-
+import{CrudTechnologyAreaComponent} from './admin/crud-technology-area/crud-technology-area.component';
 
 
 @NgModule({
 
   declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
-    ProjectsComponent, MyProfileComponent, AddskillComponent, AddSkillsComponent, UserComponent, RegionsComponent],
+    ProjectsComponent, MyProfileComponent, AddskillComponent, AddSkillsComponent, UserComponent, RegionsComponent,CrudTechnologyAreaComponent],
 
   imports: [
     CommonModule,

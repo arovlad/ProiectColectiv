@@ -17,7 +17,6 @@ export class AddskillComponent implements OnInit {
   errMessageLevel = 0;
   errMessageArea = 0;
   errMessageSkillName = 0;
-
   idSkill = 0;
   idUser = -1;
   skillKnowledgeLevel = 0;
@@ -27,6 +26,7 @@ export class AddskillComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.idUser = +localStorage.getItem('id');
+    alert(this.idUser);
     this.getAllTechAreas();
 
   }
@@ -34,9 +34,9 @@ export class AddskillComponent implements OnInit {
     this.errMessageLevel = 0;
     this.errMessageArea = 0;
     this.errMessageSkillName = 0;
-
+  alert(this.idUser);
     this.skillService.idSKill(this.skillname).subscribe(value => {
-
+      alert(this.idUser);
       this.idSkill = value;
       alert(this.idSkill);
       if ((this.idSkill === -1) && (this.skillname !== '') && (this.techArea !== '')) {
@@ -74,7 +74,13 @@ export class AddskillComponent implements OnInit {
       }
       else{
         alert('enter else statment');
-        alert(this.idUser + this.idSkill + this.skillKnowledgeLevel);
+        alert("user");
+        alert(this.idUser);
+        alert("skill");
+        alert(this.idSkill);
+        this.skillKnowledgeLevel = + this.skillLevel;
+        alert('skill level: ');
+        alert(this.skillKnowledgeLevel);
         this.skillService.saveProfileSkill(this.idUser, this.idSkill, this.skillKnowledgeLevel).subscribe(dataa => {
           alert('saved in profile skills');
         }, error => {
