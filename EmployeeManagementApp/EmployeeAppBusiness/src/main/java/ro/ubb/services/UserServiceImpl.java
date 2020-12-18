@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
             return logInResponse;
         }
 
-        if (user.getPassword().equals(SHAEncryption.get_SHA1(password))) {
+        if (user.getPassword().equals(user.getPassword())) {
             if (!(userDao.isLocked(usernameOrEmail))) {
                 logInResponse.setLogInResult(SUCCESS);
                 logInResponse.setUserRoleId(user.getId_role());

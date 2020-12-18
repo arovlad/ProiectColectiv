@@ -1,4 +1,4 @@
-export interface UsersInfo {
+export interface IEmployeeInfo {
   first_name: string;
   id: number;
   id_consulting_level: number;

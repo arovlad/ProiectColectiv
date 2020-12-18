@@ -4,8 +4,7 @@ import{TechnologyareaService} from '../../../services/technologyarea.service';
 
 @Component({
   selector: 'app-crud-technology-area',
-  templateUrl: './crud-technology-area.component.html',
-  styleUrls: ['./crud-technology-area.component.css']
+  templateUrl: './crud-technology-area.component.html'
 })
 export class CrudTechnologyAreaComponent implements OnInit {
   techAreas: Array<any> = [];

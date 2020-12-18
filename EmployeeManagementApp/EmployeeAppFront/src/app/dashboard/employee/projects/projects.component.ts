@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IProjectInfo } from './projectsInfo';
+import { IProjectInfo } from './projectInfo';
 import {ProjectsService} from '../../../services/projects.service';
 
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit {
   public list: IProjectInfo[] = [

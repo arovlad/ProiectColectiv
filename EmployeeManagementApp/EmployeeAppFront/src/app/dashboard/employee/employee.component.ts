@@ -6,10 +6,9 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
-  templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.css']
+  templateUrl: './employee.component.html'
 })
-export class MyProfileComponent implements OnInit {
+export class EmployeeComponent implements OnInit {
   id="";
   idUser=0;
   public list: IProfileInfo[] = [

@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  templateUrl: './dashboard-navbar.component.html'
 })
-export class NavbarComponent implements OnInit {
+export class DashboardNavbarComponent implements OnInit {
   isVisible = false;
 
   constructor() { }

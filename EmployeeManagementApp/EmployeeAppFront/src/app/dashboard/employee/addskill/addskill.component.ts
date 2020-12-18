@@ -4,8 +4,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-addskill',
-  templateUrl: './addskill.component.html',
-  styleUrls: ['./addskill.component.css']
+  templateUrl: './addskill.component.html'
 })
 export class AddskillComponent implements OnInit {
   username = '';

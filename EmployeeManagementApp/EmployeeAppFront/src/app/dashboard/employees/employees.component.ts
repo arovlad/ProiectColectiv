@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersInfo} from './usersInfo';
+import {IEmployeeInfo} from './employeeInfo';
 import {HttpClient} from '@angular/common/http';
 import {UsersService} from '../../services/users.service';
 import {FilterbytechnologyService} from '../../services/filterbytechnology.service';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  templateUrl: './employees.component.html'
 })
-export class UsersComponent implements OnInit {
+export class EmployeesComponent implements OnInit {
   // searchText = '';
-  public list: UsersInfo[] = [];
+  public list: IEmployeeInfo[] = [];
   query = '';
   constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService) { }
 

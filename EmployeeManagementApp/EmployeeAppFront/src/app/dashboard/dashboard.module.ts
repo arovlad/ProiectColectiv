@@ -2,25 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { UsersComponent } from './users/users.component';
+import { EmployeesComponent } from './employees/employees.component';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
-import { AddskillComponent } from './user/addskill/addskill.component';
-import {FormsModule} from '@angular/forms';
-import { NavbarComponent} from './navbar/navbar.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CreateProjectComponent } from './create-project/create-project.component';
-import {ProjectsComponent} from './users/projects/projects.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
-import { AddSkillsComponent } from './add-skills/add-skills.component';
+import { AddskillComponent } from './employee/addskill/addskill.component';
+import { FormsModule } from '@angular/forms';
+import { DashboardNavbarComponent } from './dashboard-navbar.component';
+import { CreateProjectComponent } from './employee/create-project/create-project.component';
+import { ProjectsComponent } from './employee/projects/projects.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { AddSkillsComponent } from './admin/add-skills/add-skills.component';
 import { RegionsComponent } from './admin/regions/regions.component';
 import{CrudTechnologyAreaComponent} from './admin/crud-technology-area/crud-technology-area.component';
 
 
 @NgModule({
 
-  declarations: [UsersComponent, AdminComponent, NavbarComponent, ProfileComponent, CreateProjectComponent,
-    ProjectsComponent, MyProfileComponent, AddskillComponent, AddSkillsComponent, UserComponent, RegionsComponent,CrudTechnologyAreaComponent],
+  declarations: [EmployeesComponent, AdminComponent, DashboardNavbarComponent, ProfileComponent, CreateProjectComponent,
+    ProjectsComponent, EmployeeComponent, AddskillComponent, AddSkillsComponent, RegionsComponent, CrudTechnologyAreaComponent],
 
   imports: [
     CommonModule,
@@ -28,10 +26,10 @@ import{CrudTechnologyAreaComponent} from './admin/crud-technology-area/crud-tech
     FormsModule
   ],
   exports: [
-    UsersComponent,
+    EmployeesComponent,
     ProjectsComponent,
     AdminComponent,
-    NavbarComponent,
+    DashboardNavbarComponent,
     ProfileComponent,
     CreateProjectComponent,
     AddSkillsComponent
