@@ -12,12 +12,12 @@ import { ProjectsComponent } from './employee/projects/projects.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AddSkillsComponent } from './admin/add-skills/add-skills.component';
 import { RegionsComponent } from './admin/regions/regions.component';
-import{CrudTechnologyAreaComponent} from './admin/crud-technology-area/crud-technology-area.component';
+import { CrudTechnologyAreaComponent } from './admin/crud-technology-area/crud-technology-area.component';
 
 
 @NgModule({
 
-  declarations: [EmployeesComponent, AdminComponent, DashboardNavbarComponent, ProfileComponent, CreateProjectComponent,
+  declarations: [EmployeesComponent, AdminComponent, DashboardNavbarComponent, CreateProjectComponent,
     ProjectsComponent, EmployeeComponent, AddskillComponent, AddSkillsComponent, RegionsComponent, CrudTechnologyAreaComponent],
 
   imports: [
@@ -30,7 +30,6 @@ import{CrudTechnologyAreaComponent} from './admin/crud-technology-area/crud-tech
     ProjectsComponent,
     AdminComponent,
     DashboardNavbarComponent,
-    ProfileComponent,
     CreateProjectComponent,
     AddSkillsComponent
   ]

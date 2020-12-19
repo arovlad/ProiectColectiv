@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IEmployeeInfo} from './employeeInfo';
+import {IEmployeeInfo} from '../employee/employeeInfo';
 import {HttpClient} from '@angular/common/http';
 import {UsersService} from '../../services/users.service';
 import {FilterbytechnologyService} from '../../services/filterbytechnology.service';
