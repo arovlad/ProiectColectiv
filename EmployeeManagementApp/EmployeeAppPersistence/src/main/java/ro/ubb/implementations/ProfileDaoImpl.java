@@ -42,7 +42,7 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
             } else
                 return null;
 
-            return new Profile(id_profile, id_user, first_name,last_name, picture, id_consulting_level, verified);
+            return new Profile(id_profile, id_user, first_name, last_name, picture, id_consulting_level, verified);
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
@@ -164,7 +164,7 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
 
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int profileID = resultSet.getInt("ID");
                 Profile profile = find(profileID);
                 profiles.add(profile);
@@ -172,6 +172,53 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
 
             return profiles;
 
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
+    }
+
+    @Override
+    public List<Profile> findAll() throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+
+            List<Profile> profiles = new ArrayList<Profile>();
+
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM profile";
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                int idUser = resultSet.getInt("ID_User");
+                String firstName = resultSet.getString("First_Name");
+                String lastName = resultSet.getString("Last_Name");
+                String picture = resultSet.getString("Picture");
+                int idConsultingLevel = resultSet.getInt("ID_Consulting_Level");
+                int verified = resultSet.getInt("Verified");
+
+                Profile profile = new Profile();
+                profile.setId(id);
+                profile.setId_user(idUser);
+                profile.setFirst_name(firstName);
+                profile.setLast_name(lastName);
+                profile.setPicture(picture);
+                profile.setId_consulting_level(idConsultingLevel);
+                profile.setVerified(verified);
+
+                profiles.add(profile);
+            }
+            resultSet.close();
+
+            return profiles;
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }

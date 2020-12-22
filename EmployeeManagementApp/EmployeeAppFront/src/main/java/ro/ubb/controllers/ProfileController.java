@@ -2,11 +2,12 @@ package ro.ubb.controllers;
 
 import ro.ubb.exceptions.DbException;
 import ro.ubb.models.FilterByTechnologyResponse;
-import ro.ubb.models.GetAllProjectsFromUserResponse;
+import ro.ubb.models.Profile;
 import ro.ubb.services.ProfileServiceImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/profile")
 public class ProfileController {
@@ -24,5 +25,10 @@ public class ProfileController {
     return profileService.filterByTechnology(technology);
   }
 
-
+  @GET
+  @Path("/all")
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Profile> findAll() throws DbException {
+    return profileService.findAll();
+  }
 }
