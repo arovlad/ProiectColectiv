@@ -11,4 +11,5 @@ public interface ProfileService {
 
     FilterByTechnologyResponse filterByTechnology(String technology) throws DbException;
 
+    List<Profile> findAll() throws DbException;
 }
