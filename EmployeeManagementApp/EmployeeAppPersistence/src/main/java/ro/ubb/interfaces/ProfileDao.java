@@ -15,4 +15,6 @@ public interface ProfileDao {
     List<Profile> getAllProfiles(TechnologyArea technologyArea) throws DbException;
 
     List<Profile> findAll() throws DbException;
+
+    Profile getProfileByUserID(int idUser) throws DbException;
 }
