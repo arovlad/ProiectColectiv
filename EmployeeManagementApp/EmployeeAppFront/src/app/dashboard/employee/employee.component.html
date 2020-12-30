@@ -3,3 +3,59 @@
   <b>{{ element.id }}</b><br><i>{{ element.first_name }}</i><br><i>{{ element.last_name }}</i><br><i>{{ element.id_consulting_level }}</i><br><i>{{ element.verified }}</i><br><!--<i>{{ element.region }}</i>-->
   <br><br>
 </div>
+  <div class="row">
+    <div class="col-4">
+      <img [src]= "picture"  alt='image' style="width:500px;height:600px;">
+    </div>
+    <div class="card" style="width:500px;height:600px;">
+      <div class="card-header">
+        <a *ngIf="equals === 1 "><b>Your profile: </b> </a>
+      <a *ngIf="equals === 0 "><b> profile: </b></a>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h5 class="card-title"><b>Name: </b> {{name}} </h5></li>
+          <li class="list-group-item"><h6> <b>Consulting level: </b>{{consultingLevel}}</h6></li>
+          <li class="list-group-item"><h6><b>Region: </b> {{region}}</h6></li>
+          <div class="row">
+            <div class="col-7">
+              <h6><b>Skills: </b> {{skills}}</h6>
+            </div>
+         <div class="col-5">
+           <a *ngIf="equals === 1 "><b>add new skill :</b>
+           <div class="form-group">
+
+
+             <label for="skills" >Technology Area  : </label>
+             <select [(ngModel)]="skills" id="skills" name="skills"  >
+               <option value="" disabled selected>Choose...</option>
+               <option *ngFor="let tech of skills" [value]="tech">{{tech}}
+
+               </option>
+
+
+             </select>
+
+           </div>
+           </a>
+         </div>
+
+
+
+
+          </div>
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+
+
+
+        </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+

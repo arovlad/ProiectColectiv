@@ -7,11 +7,11 @@ import {Observable} from 'rxjs';
 export class TechnologyareaService {
 
   constructor(private http: HttpClient) {}
-  save(newName: string):Observable <any>{
+  save(newName: string): Observable <any>{
     const info = 'placeholder';
     return this.http.post('placeholder', info);
   }
-  delete(name: string):Observable <any>{
+  delete(name: string): Observable <any>{
     const info = 'placeholder';
     return this.http.post('placeholder', info);
   }
