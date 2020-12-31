@@ -8,12 +8,13 @@ public class Profile {
     private String picture;
     private int id_consulting_level;
     private int verified;
+    private int id_region;
 
     public Profile(){
 
     }
 
-    public Profile(int id, int id_user, String first_name, String last_name, String picture, int id_consulting_level, int verified) {
+    public Profile(int id, int id_user, String first_name, String last_name, String picture, int id_consulting_level, int verified, int id_region) {
         this.id = id;
         this.id_user = id_user;
         this.first_name = first_name;
@@ -21,14 +22,16 @@ public class Profile {
         this.picture = picture;
         this.id_consulting_level = id_consulting_level;
         this.verified = verified;
+        this.id_region = id_region;
     }
 
-    public Profile(int id_user, String first_name, String last_name, String picture, int id_consulting_level) {
+    public Profile(int id_user, String first_name, String last_name, String picture, int id_consulting_level, int id_region) {
         this.id_user = id_user;
         this.first_name = first_name;
         this.last_name = last_name;
         this.picture = picture;
         this.id_consulting_level = id_consulting_level;
+        this.id_region = id_region;
     }
 
     public int getId() {
@@ -85,5 +88,13 @@ public class Profile {
 
     public void setVerified(int verified) {
         this.verified = verified;
+    }
+
+    public int getId_region() {
+        return id_region;
+    }
+
+    public void setId_region(int id_region) {
+        this.id_region = id_region;
     }
 }

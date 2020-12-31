@@ -13,4 +13,8 @@ public interface ProfileDao {
      * @return - the list of all Profiles with the given technology area
      */
     List<Profile> getAllProfiles(TechnologyArea technologyArea) throws DbException;
+
+    List<Profile> findAll() throws DbException;
+
+    Profile getProfileByUserID(int idUser) throws DbException;
 }

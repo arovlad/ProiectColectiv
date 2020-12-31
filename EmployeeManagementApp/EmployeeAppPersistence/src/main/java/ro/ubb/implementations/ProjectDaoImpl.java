@@ -8,6 +8,9 @@ import ro.ubb.models.Project;
 import ro.ubb.utilities.DatabaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ProjectDaoImpl implements GenericDao, ProjectDao {
 
@@ -171,5 +174,40 @@ public class ProjectDaoImpl implements GenericDao, ProjectDao {
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
+    }
+
+    @Override
+    public List<Project> findProjectsByUser(int id) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try{
+            DatabaseConnection databaseConnection=new DatabaseConnection();
+            Connection connection=databaseConnection.getConnection();
+
+
+            List<Project> projects=new ArrayList<>();
+            String query="SELECT proj.Project_Name,proj.Description,proj.Duration FROM profile prof join profile_project pp on prof.ID=pp.ID_Profile join project proj on pp.ID_Project=proj.ID join customer c on proj.ID_Customer=c.ID where prof.ID_User=?";
+            PreparedStatement preparedStatement=connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            String proj_name,description;
+            int duration;
+            while(resultSet.next()){
+                proj_name=resultSet.getString("Project_Name");
+                description=resultSet.getString("Description");
+                duration=resultSet.getInt("Duration");
+                Project project=new Project(proj_name,duration,description);
+                projects.add(project);
+            }
+
+            return projects;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 }
