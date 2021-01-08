@@ -8,6 +8,7 @@ import { CreateProjectComponent } from './employee/create-project/create-project
 import { EmployeeComponent } from './employee/employee.component';
 import { AddSkillsComponent } from './admin/add-skills/add-skills.component';
 import { RegionsComponent } from './admin/regions/regions.component';
+import {ProjectsComponent} from './employee/projects/projects.component';
 
 const routes: Routes = [
   { path: 'dashboard/admin', component: AdminComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'dashboard/employee/:id', component: EmployeeComponent },
   { path: 'dashboard/admin/add-skills', component: AddSkillsComponent },
   { path: 'dashboard/employee/addskill', component: AddskillComponent },
-  { path: 'dashboard/admin/regions', component: RegionsComponent }
+  { path: 'dashboard/admin/regions', component: RegionsComponent },
+  { path: 'test/projects', component: ProjectsComponent}
 ];
 
 @NgModule({
