@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SkillService} from "../../../services/skill.service";
-import{TechnologyareaService} from '../../../services/technologyarea.service';
+import {SkillService} from '../../../services/skill.service';
+import {TechnologyareaService} from '../../../services/technologyarea.service';
 
 @Component({
   selector: 'app-crud-technology-area',
@@ -8,10 +8,10 @@ import{TechnologyareaService} from '../../../services/technologyarea.service';
 })
 export class CrudTechnologyAreaComponent implements OnInit {
   techAreas: Array<any> = [];
-  name="";
-  area="";
-  newName="";
-  constructor(private skillService: SkillService,private technologyService: TechnologyareaService) {
+  name = '';
+  area = '';
+  newName = '';
+  constructor(private skillService: SkillService, private technologyService: TechnologyareaService) {
 
   }
 
@@ -19,7 +19,7 @@ export class CrudTechnologyAreaComponent implements OnInit {
     this.getAllTechAreas();
   }
 
-  getAllTechAreas() {
+  getAllTechAreas(): void {
     this.skillService.getAllTechAreas().subscribe(
       (dataaa) => {
 
@@ -29,27 +29,27 @@ export class CrudTechnologyAreaComponent implements OnInit {
       },
       (error) => {
 
-        console.log("error");
+        console.log('error');
       }
     );
   }
-  delete(param: string){
-    this.name=param;
+  delete(param: string): void{
+    this.name = param;
     alert(this.name);
-    this.technologyService.delete(this.name).subscribe((data)=>{
-      alert("technology area deleted from database");
-    },(error)=>{
-      alert("something went wrong");
-    })
+    this.technologyService.delete(this.name).subscribe((data) => {
+      alert('technology area deleted from database');
+    }, (error) => {
+      alert('something went wrong');
+    });
   }
-  insert(param: string) {
+  insert(param: string): void {
     this.newName = param;
     alert(this.newName);
     this.technologyService.save(this.newName).subscribe((data) => {
-      alert("techology saved in database");
-    },(error)=>{
-      alert("something went worng");
-    })
+      alert('techology saved in database');
+    }, (error) => {
+      alert('something went worng');
+    });
 
 
   }
