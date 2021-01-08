@@ -14,4 +14,6 @@ public interface ProfileService {
     List<Profile> findAll() throws DbException;
 
     GetProfileByUserIdResponse getProfileByUserId(int userId) throws DbException;
+
+    int setVerified(int id) throws DbException;
 }

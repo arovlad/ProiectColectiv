@@ -264,4 +264,17 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
             throw new DbException("Something went wrong with the database");
         }
     }
+
+    @Override
+    public Profile setVerified(int id) throws DbException {
+        Profile profile = find(id);
+        if(profile != null){
+            profile.setVerified(1);
+            update(profile);
+            return profile;
+        }
+        else {
+            return null;
+        }
+    }
 }

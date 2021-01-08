@@ -17,4 +17,6 @@ public interface ProfileDao {
     List<Profile> findAll() throws DbException;
 
     Profile getProfileByUserID(int idUser) throws DbException;
+
+    Profile setVerified(int id) throws DbException;
 }

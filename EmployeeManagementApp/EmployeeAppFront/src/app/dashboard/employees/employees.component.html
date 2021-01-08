@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Users</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search by technology" aria-label="Search" [(ngModel)]="query" name="query">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>
+  </form>
+</nav>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#ID</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Consulting Level</th>
+    <th scope="col">Verified</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let element of list">
+    <td>{{ element.id }}</td>
+    <td>{{ element.first_name }}</td>
+    <td>{{ element.last_name }}</td>
+    <td>{{ element.id_consulting_level }}</td>
+    <td>{{ element.verified }}</td>
+
+  </tr>
+  </tbody>
+</table>

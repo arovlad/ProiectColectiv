@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
 export class UsersService {
 
   constructor(private http: HttpClient) { }
-  get(): Observable<any> {
-    const info = 'placeholder';
-    return this.http.post('placeholder', info);
+  get(): Observable<any>{
+    return this.http.get('http://localhost:8080/EmployeeAppFront_war/rest/profile/all');
+
   }
 }

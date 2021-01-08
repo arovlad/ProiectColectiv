@@ -58,17 +58,17 @@ export class LoginComponent implements OnInit {
         }
 
         else {
-            localStorage.setItem('role', String(loginInfo.logInResult));
+            localStorage.setItem('role', String(loginInfo.userRoleId));
             localStorage.setItem('id', String(loginInfo.id));
 
             if (loginInfo.userRoleId === 1){ // employee
-              this.router.navigate(['/dashboard/projects']);
+              this.router.navigate(['/dashboard/employees']);
             }
             if (loginInfo.userRoleId === 2){ // admin
               this.router.navigate(['/dashboard/admin']);
             }
             if (loginInfo.userRoleId === 3){ // supervisor
-              this.router.navigate(['/dashboard/users']);
+              this.router.navigate(['/dashboard/employees']);
             }
         }
       },
