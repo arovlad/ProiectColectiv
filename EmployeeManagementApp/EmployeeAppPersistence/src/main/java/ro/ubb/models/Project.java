@@ -91,7 +91,7 @@ public class Project {
     }
 
     public void setDuration(int duration) {
-        duration = duration;
+        this.duration = duration;
     }
 
     public String getDescription() {
