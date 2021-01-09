@@ -9,7 +9,7 @@ public class ProfileProject {
     private boolean finished;
     private ProjectRole projectRole;
 
-    ProfileProject(){
+    public ProfileProject(){
 
     }
 
