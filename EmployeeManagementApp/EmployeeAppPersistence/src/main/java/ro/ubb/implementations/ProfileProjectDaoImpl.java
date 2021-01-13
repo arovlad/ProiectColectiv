@@ -8,6 +8,8 @@ import ro.ubb.models.ProfileProject;
 import ro.ubb.utilities.DatabaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileProjectDaoImpl implements GenericDao, ProfileProjectDao {
     @Override
@@ -139,6 +141,39 @@ public class ProfileProjectDaoImpl implements GenericDao, ProfileProjectDao {
                 return profileProject;
             else
                 return null;
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
+    }
+
+    @Override
+    public List<Integer> findAllProjectsOfUser(int idProfile) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+
+            List<Integer> idProjects = new ArrayList<Integer>();
+
+            String query = "SELECT ID_Project FROM profile_project WHERE ID_Profile =  ?";
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, idProfile);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int projectId = resultSet.getInt("ID_Project");
+                idProjects.add(projectId);
+            }
+
+            return idProjects;
+
         } catch (SQLException sqlException) {
             throw new DbException("Something went wrong with the database");
         }
