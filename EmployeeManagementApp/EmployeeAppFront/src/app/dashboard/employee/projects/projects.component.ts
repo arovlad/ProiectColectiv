@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IProjectInfo } from './projectInfo';
 import {ProjectsService} from '../../../services/projects.service';
@@ -8,6 +8,7 @@ import {ProjectsService} from '../../../services/projects.service';
   templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit {
+  @Input() userId: string | undefined;
   public list: IProjectInfo[] = [
     // {name: 'Project #1', role: 'Team leader', description: 'I worked on this.', duration: '2010-2013',
     //   customer: 'MHP RO', skillList: ['java', 'sql']},
@@ -26,6 +27,10 @@ export class ProjectsComponent implements OnInit {
     error => {
       alert('There was an error retrieving the projects.');
     });
+  }
+
+  isOwner(): boolean {
+    return localStorage.getItem('id') === this.userId;
   }
 
   finish($event: MouseEvent): void {

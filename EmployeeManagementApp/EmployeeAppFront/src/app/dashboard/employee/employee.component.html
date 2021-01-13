@@ -1,78 +1,58 @@
 <app-navbar></app-navbar>
-  <div class="row">
+<div class="container-md">
+  <h5 class="mb-3">Profile information</h5>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
     <div class="col-4">
-      <img [src]= "picture"  alt='image' style="width:500px;height:600px;">
+      <img [src]="picture" alt='image' style="width:500px;height:600px;">
     </div>
     <div class="card" style="width:500px;height:600px;">
       <div class="card-header">
-        <a *ngIf="equals === 1 "><b>Your profile: </b> </a>
-      <a *ngIf="equals === 0 "><b> profile: </b></a>
       </div>
       <div class="card-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><h6 class="card-title"><b>Name: </b> {{name}} </h6></li>
-          <li class="list-group-item"><h6> <b>Consulting level: </b>{{consultingLevel}}</h6></li>
+          <li class="list-group-item"><h6><b>Consulting level: </b>{{consultingLevel}}</h6></li>
           <li class="list-group-item"><h6><b>Region: </b> {{region}}</h6></li>
-          <div class="row">
+          <!--<div class="row">
             <div class="col-7">
               <h6><b>Skills: </b> {{myskills}}</h6>
             </div>
-         <div class="col-5">
-           <div class="form">
-           <a *ngIf="equals === 1 "><b>add new skill :</b>
-           <div class="form-group">
-
-
-             <label for="skills" >Choose a skill : </label>
-             <select [(ngModel)]="skills" id="skills" name="skills"  >
-               <option value="" disabled selected>Choose...</option>
-               <option *ngFor="let tech of skills" [value]="tech">{{tech}}
-
-               </option>
-
-
-             </select>
-
-           </div>
-             <div class="form-group">
-               <label for="skillLevel">Skill level  : </label>
-               <br>
-               <select [(ngModel)]="skillLevel" id="skillLevel" name="skillLevel">
-                 <option value="" disabled selected>Choose...</option>
-                 <option  value="1"> 1 </option>
-                 <option value="2"> 2 </option>
-                 <option value="3"> 3 </option>
-                 <option value="4"> 4 </option>
-                 <option value="5"> 5 </option>
-
-
-               </select>
-
-             </div>
-             <button type="submit"
-                     class="btn btn-primary" (click)="saveSkill(skills,skillLevel)">save skill <i class="fas fa-sign-in-alt"></i></button>
-
-           </a>
-           </div>
-         </div>
-
-
-
-
-          </div>
-
-          <li class="list-group-item"></li>
-          <li class="list-group-item"></li>
-
-
-
+            <div class="col-5">
+              <div class="form">
+                <a *ngIf="equals === 1 "><b>add new skill :</b>
+                  <div class="form-group">
+                    <label for="skills">Choose a skill : </label>
+                    <select [(ngModel)]="skills" id="skills" name="skills">
+                      <option value="" disabled selected>Choose...</option>
+                      <option *ngFor="let tech of skills" [value]="tech">{{tech}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="skillLevel">Skill level : </label>
+                    <br>
+                    <select [(ngModel)]="skillLevel" id="skillLevel" name="skillLevel">
+                      <option value="" disabled selected>Choose...</option>
+                      <option value="1"> 1</option>
+                      <option value="2"> 2</option>
+                      <option value="3"> 3</option>
+                      <option value="4"> 4</option>
+                      <option value="5"> 5</option>
+                    </select>
+                  </div>
+                  <button type="submit"
+                          class="btn btn-primary" (click)="saveSkill(skills,skillLevel)">save skill <i
+                    class="fas fa-sign-in-alt"></i></button>
+                </a>
+              </div>
+            </div>
+          </div>-->
         </ul>
-
-
       </div>
     </div>
   </div>
-
+  <app-projects userId="{{ this.id }}"></app-projects>
+</div>
 
 
 

@@ -20,4 +20,15 @@ export class DashboardNavbarComponent implements OnInit {
       this.isVisible = true;
     }
   }
+
+  expand(): void {
+    // @ts-ignore
+    document.getElementById('NavbarDropdownMenu').style.display = 'initial';
+    console.log('expand');
+  }
+
+  collapse(): void {
+    // @ts-ignore
+    document.getElementById('NavbarDropdownMenu').style.display = 'none';
+  }
 }
