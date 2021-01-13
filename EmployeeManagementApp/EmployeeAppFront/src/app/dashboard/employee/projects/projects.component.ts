@@ -18,7 +18,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private service: ProjectsService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.service.get().subscribe(response =>
+    this.service.get('1').subscribe(response =>
     {
       this.list = response;
     },
