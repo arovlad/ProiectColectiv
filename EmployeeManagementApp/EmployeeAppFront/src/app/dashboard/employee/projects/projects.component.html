@@ -12,15 +12,16 @@
       </svg>
     </a>
   </div>
-  <b class="project-title">{{ project.title }}</b><span> &#8226; </span><span class="project-duration">{{ project.duration }}</span>
-  <br><span class="project-client">{{ project.client }}</span><span> &#8226; </span><i class="project-role">{{ project.role }}</i>
+  <input type="hidden" class="project-id" value="{{ project.name }}"> <!--project.id-->
+  <b class="project-title">{{ project.name }}</b><span> &#8226; </span><span class="project-duration">{{ project.duration }} months</span>
+  <br><span class="project-client">{{ project.customer }}</span><!--<span> &#8226; </span><i class="project-role">{{ project.role }}</i>-->
   <br><br>
   <p class="project-description">
     {{ project.description }}
   </p>
-  <div class="skill-list">
+  <!--<div class="skill-list">
     <span class="badge bg-primary skill-badge" *ngFor="let skill of project.skillList">
       {{ skill }}
     </span>
-  </div>
+  </div>-->
 </div>
