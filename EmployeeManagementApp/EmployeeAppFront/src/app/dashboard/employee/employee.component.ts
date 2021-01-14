@@ -19,7 +19,7 @@ export class EmployeeComponent implements OnInit {
   firstName = '';
   consultingLevel = '';
   lastName = '';
-  picture = 'assets/profile.png ';
+  picture = 'assets/profile.png';
   verified = 0;
   equals = 0;
   region = '';
