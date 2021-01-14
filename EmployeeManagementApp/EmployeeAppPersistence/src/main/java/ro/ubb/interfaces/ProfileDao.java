@@ -19,4 +19,6 @@ public interface ProfileDao {
     Profile getProfileByUserID(int idUser) throws DbException;
 
     Profile setVerified(int id) throws DbException;
+
+    Profile setNotVerified(int id) throws DbException;
 }

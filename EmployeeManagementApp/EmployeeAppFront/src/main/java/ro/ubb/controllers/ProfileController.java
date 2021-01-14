@@ -51,4 +51,12 @@ public class ProfileController {
   public int setVerified(@QueryParam("id") int id) throws DbException {
     return new ProfileServiceImpl().setVerified(id);
   }
+
+  @POST
+  @Path("/setNotVerified")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public int setNotVerified(@QueryParam("id") int id) throws DbException {
+    return new ProfileServiceImpl().setNotVerified(id);
+  }
 }

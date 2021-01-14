@@ -79,4 +79,14 @@ public class ProfileServiceImpl implements ProfileService {
         else
             return 0;
     }
+
+    @Override
+    public int setNotVerified(int id) throws DbException {
+        ProfileDaoImpl profileDao = new ProfileDaoImpl();
+        Profile profile = profileDao.setNotVerified(id);
+        if(profile != null)
+            return 1;
+        else
+            return 0;
+    }
 }
