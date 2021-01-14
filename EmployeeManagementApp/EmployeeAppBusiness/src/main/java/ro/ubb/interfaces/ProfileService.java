@@ -16,4 +16,7 @@ public interface ProfileService {
     GetProfileByUserIdResponse getProfileByUserId(int userId) throws DbException;
 
     int setVerified(int id) throws DbException;
+
+    int setNotVerified(int id) throws DbException;
+
 }

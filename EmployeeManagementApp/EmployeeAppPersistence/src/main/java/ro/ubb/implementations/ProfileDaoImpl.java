@@ -277,4 +277,17 @@ public class ProfileDaoImpl implements GenericDao, ProfileDao {
             return null;
         }
     }
+
+    @Override
+    public Profile setNotVerified(int id) throws DbException {
+        Profile profile = find(id);
+        if(profile != null){
+            profile.setVerified(0);
+            update(profile);
+            return profile;
+        }
+        else {
+            return null;
+        }
+    }
 }
