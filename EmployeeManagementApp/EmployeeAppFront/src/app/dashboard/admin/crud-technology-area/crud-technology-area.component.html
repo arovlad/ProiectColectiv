@@ -1,40 +1,31 @@
-<div class="insert-form">
-<div class="col-md-5 offset-md-0 mt-4">
-  <div class="w-50 p-3" style="background-color: #eee;">
-    <h4>Add new Techology Area</h4>
-    <form>
-      <div class="form-group">
-        <label for="newName">insert name:</label>
-        <input [(ngModel)]="newName" type="text" name="newName"
-               class="form-control"
-               id="newName"
-               placeholder="">
-
-
-      </div>
-      <button type="submit"  class="successbtn" (click)="insert(newName)">add<i class="fas fa-sign-in-alt"></i></button>
-    </form>
-  </div>
-</div>
-</div>
-<br>
-<br>
-<h3>Technology Areas: </h3>
-<br>
-
+<!--<div class="insert-form">-->
+<!--<div>-->
+<!--  <div>-->
+<!--    <form>-->
+<!--      <div class="form-group">-->
+<!--        <label for="newName">insert name:</label>-->
+<!--        <input [(ngModel)]="newName" type="text" name="newName"-->
+<!--               class="form-control"-->
+<!--               id="newName"-->
+<!--               placeholder="">-->
+<!--      </div>-->
+<!--      <button type="submit"  class="successbtn" (click)="insert(newName)">add<i class="fas fa-sign-in-alt"></i></button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">Technology Area Name</th>
-    <th scope="col">delete this technology</th>
+    <th>ID</th>
+    <th style="width:90%">Name</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let area of techAreas; let i=index">
     <td class="id">{{i}}</td>
-    <td>{{area}}</td>
-    <td class="but"> <button type="submit"  class="btn btn-danger" (click)="delete(area)">delete<i class="fas fa-sign-in-alt"></i></button> </td>
+    <td >{{area}}</td>
+    <!--<td class="but"> <button type="submit"  class="btn btn-danger" (click)="delete(area)">delete<i class="fas fa-sign-in-alt"></i></button> </td>-->
   </tr>
   </tbody>
 </table>
