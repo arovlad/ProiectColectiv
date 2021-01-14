@@ -6,15 +6,13 @@
       <img [src]="picture" alt="image">
     </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><h6 class="card-title"><b>Name: </b> {{name}} </h6></li>
-          <li class="list-group-item"><h6><b>Consulting level: </b>{{consultingLevel}}</h6></li>
-          <li class="list-group-item"><h6><b>Region: </b> {{region}}</h6></li>
+          <h1 style="font-weight: lighter; margin-bottom:0; margin-top: 20px;">{{name}}</h1>
+          <p class="mb-4" >{{consultingLevel}}</p>
+          <p><b>Region:</b> {{region}}</p>
+          <!--<p>Skills: {{myskills}}</p>-->
         </ul>
         <div class="row">
-          <div class="col-7">
-            <h6><b>Skills: </b> {{myskills}}</h6>
-          </div>
-          <div class="col-5">
+          <div style="display:none">
             <div class="form">
               <a *ngIf="equals === 1 ">
                 <div class="form-group">
@@ -49,9 +47,10 @@
           </div>
         </div>
   </div>
+  <h5 class="mb-3">Projects</h5>
 </div>
-<div class="container-md">
-  <app-projects userId="{{ this.id }}"></app-projects>
+<div class="container-md" style="padding: 0">
+<app-projects userId="{{ this.id }}" style="max-width: 58.333333%;"></app-projects>
 </div>
 
 
