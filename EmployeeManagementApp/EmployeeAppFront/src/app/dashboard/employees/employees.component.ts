@@ -14,6 +14,7 @@ export class EmployeesComponent implements OnInit {
   public list: IEmployeeInfo[] = [];
   query = '';
   techArea = '';
+  picture = 'assets/profile.png ';
   // tslint:disable-next-line:max-line-length
   constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService, private skillService: SkillService) { }
 
