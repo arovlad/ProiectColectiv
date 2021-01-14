@@ -5,52 +5,53 @@
     <div class="col-4">
       <img [src]="picture" alt="image">
     </div>
-    <div class="card" style="width:500px;height:600px;">
-      <div class="card-header">
-      </div>
-      <div class="card-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><h6 class="card-title"><b>Name: </b> {{name}} </h6></li>
           <li class="list-group-item"><h6><b>Consulting level: </b>{{consultingLevel}}</h6></li>
           <li class="list-group-item"><h6><b>Region: </b> {{region}}</h6></li>
-          <!--<div class="row">
-            <div class="col-7">
-              <h6><b>Skills: </b> {{myskills}}</h6>
-            </div>
-            <div class="col-5">
-              <div class="form">
-                <a *ngIf="equals === 1 "><b>add new skill :</b>
+        </ul>
+        <div class="row">
+          <div class="col-7">
+            <h6><b>Skills: </b> {{myskills}}</h6>
+          </div>
+          <div class="col-5">
+            <div class="form">
+              <a *ngIf="equals === 1 "><b>add new skill :</b>
+                <div class="form-group">
                   <div class="form-group">
-                    <label for="skills">Choose a skill : </label>
-                    <select [(ngModel)]="skills" id="skills" name="skills">
-                      <option value="" disabled selected>Choose...</option>
-                      <option *ngFor="let tech of skills" [value]="tech">{{tech}}
+                    <label for="skillName">Skill name: </label>
+                    <input [(ngModel)]="insertSkill" type="text" name="skillname"
+                           class="form-control"
+                           id="skillName"
+                           placeholder="insert skill name">
+                  </div>
+                  <div class="form-group">
+                    <label for="technologyAreas" >Technology Area  : </label>
+                    <select [(ngModel)]="techArea" id="technologyAreas" name="techarea"  >
+                      <option *ngFor="let tech of techAreas" [value]="tech">{{tech}}
                       </option>
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label for="skillLevel">Skill level : </label>
-                    <br>
-                    <select [(ngModel)]="skillLevel" id="skillLevel" name="skillLevel">
-                      <option value="" disabled selected>Choose...</option>
-                      <option value="1"> 1</option>
-                      <option value="2"> 2</option>
-                      <option value="3"> 3</option>
-                      <option value="4"> 4</option>
-                      <option value="5"> 5</option>
-                    </select>
-                  </div>
-                  <button type="submit"
-                          class="btn btn-primary" (click)="saveSkill(skills,skillLevel)">save skill <i
-                    class="fas fa-sign-in-alt"></i></button>
-                </a>
-              </div>
+                </div>
+                <div class="form-group">
+                  <label for="skillLevel">Skill level  : </label>
+                  <br>
+                  <select [(ngModel)]="skillLevel" id="skillLevel" name="skillLevel">
+                    <option  value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="saveSkill(insertSkill,skillLevel)">save skill <i class="fas fa-sign-in-alt"></i></button>
+              </a>
             </div>
-          </div>-->
-        </ul>
-      </div>
-    </div>
+          </div>
+        </div>
   </div>
+</div>
+<div class="container-md">
   <app-projects userId="{{ this.id }}"></app-projects>
 </div>
 
