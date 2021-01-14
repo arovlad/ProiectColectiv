@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Tomcat 9.0.40" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.40" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="$USER_HOME$/Downloads/apache-maven-3.6.3-src/apache-maven-3.6.3/maven-core/src/test/projects/project-builder/it0063/jdk/jre" nameIsGenerated="true">
+  <configuration default="false" name="Tomcat 9.0.40" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.40" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../Downloads/apache-maven-3.6.3-src/apache-maven-3.6.3/maven-core/src/test/projects/project-builder/it0063/jdk/jre" nameIsGenerated="true">
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
       <artifact name="EmployeeAppFront:war">

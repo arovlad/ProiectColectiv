@@ -2,7 +2,14 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Users</a>
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search by technology" aria-label="Search" [(ngModel)]="query" name="query">
+    <div class="form-group">
+      <label for="technologyAreas" >Technology area:</label>
+      <select [(ngModel)]="query" id="technologyAreas" name="techarea">
+        <option *ngFor="let tech of techArea" [value]="tech">{{tech}}
+        </option>
+      </select>
+    </div>
+
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>
   </form>
 </nav>

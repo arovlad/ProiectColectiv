@@ -3,6 +3,7 @@ import {IEmployeeInfo} from '../employee/employeeInfo';
 import {HttpClient} from '@angular/common/http';
 import {UsersService} from '../../services/users.service';
 import {FilterbytechnologyService} from '../../services/filterbytechnology.service';
+import {SkillService} from '../../services/skill.service';
 
 @Component({
   selector: 'app-users',
@@ -12,9 +13,12 @@ export class EmployeesComponent implements OnInit {
   // searchText = '';
   public list: IEmployeeInfo[] = [];
   query = '';
-  constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService) { }
+  techArea = '';
+  // tslint:disable-next-line:max-line-length
+  constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService, private skillService: SkillService) { }
 
   ngOnInit(): void {
+    this.getAllTechAreas2();
     this.service.get().subscribe(response =>
       {
         this.list = response;
@@ -22,6 +26,20 @@ export class EmployeesComponent implements OnInit {
       error => {
         alert('There was an error retrieving the users.');
       });
+  }
+  getAllTechAreas2(): void {
+    this.skillService.getAllTechAreas().subscribe(
+      (dataaa) => {
+
+        this.techArea = dataaa;
+        console.log(this.techArea);
+
+      },
+      (error) => {
+
+        console.log('error');
+      }
+    );
   }
 
   filter(): void {
