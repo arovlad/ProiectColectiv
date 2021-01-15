@@ -10,9 +10,9 @@ import java.util.List;
 public class TechnologiesServiceImpl implements TechnologiesService {
 
     @Override
-    public List<String> getAllTechnologies() throws DbException {
-        TechnologiesDao TechnologiesDao=new TechnologiesDaoImpl();
+    public List<String> findAll() throws DbException {
+        TechnologiesDao technologiesDao=new TechnologiesDaoImpl();
 
-        return TechnologiesDao.getAllTechnologiesNames();
+        return (technologiesDao).findAll();
     }
 }
