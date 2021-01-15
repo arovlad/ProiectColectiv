@@ -35,6 +35,7 @@ export class EmployeeComponent implements OnInit {
   idSkill = 0;
   isVisible = false;
   role = '';
+  isVerified = false;
 
   constructor(private route: ActivatedRoute, private skillService: SkillService, private profileService: ProfileService) {
   }
@@ -62,7 +63,11 @@ export class EmployeeComponent implements OnInit {
         this.region = profileInfo.regionName;
         this.name = this.firstName + ' ' + this.lastName;
         this.verified = profileInfo.verified;
+        console.log(this.verified);
         this.idProfile = profileInfo.idProfile;
+        if (this.verified === 0) {
+          this.isVerified = true;
+        }
       }, error => {
         alert('error');
       }
@@ -186,6 +191,7 @@ export class EmployeeComponent implements OnInit {
     }, (error) => {
       alert('something went worng');
     });
+    window.location.reload();
   }
 
   setNotVerified(): void {

@@ -14,9 +14,7 @@ export class ProfileService {
     return this.http.get('http://localhost:8080/EmployeeAppFront_war/rest/profile/getByUser?userID=' + id);
   }
   setVerified(id: number): Observable<any>{
-    const info = {id};
-    return this.http.post('http://localhost:8080/EmployeeAppFront_war/rest/profile/setVerified?id=', info);
-
+    return this.http.post('http://localhost:8080/EmployeeAppFront_war/rest/profile/setVerified?id=' + id , {});
   }
   setNotVerified(id: number): Observable<any>{
     const info = {id};

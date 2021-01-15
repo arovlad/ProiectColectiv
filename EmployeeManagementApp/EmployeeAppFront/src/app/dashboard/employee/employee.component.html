@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container-md">
-  <div class="alert alert-danger" role="alert" *ngIf="verified === 0">{{role}}
+  <div class="alert alert-danger" role="alert" *ngIf="isVerified">{{role}}
     This profile is pending approval.
     <button style="margin-right: auto" type="button" class="btn btn-outline-danger" (click)="setVerified()" *ngIf="isVisible">Approve</button>
   </div>
