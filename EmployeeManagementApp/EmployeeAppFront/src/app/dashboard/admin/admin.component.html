@@ -1,19 +1,37 @@
 <app-navbar></app-navbar>
 <div class="container-md">
-  <h5 class="mb-3">Technology areas</h5>
+  <a id="customers"><h5 class="mb-3">Customers</h5></a>
   <div class="row shadow-sm p-3 mb-3 bg-white rounded">
-    <app-crud-technology-area></app-crud-technology-area>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th style="width:90%">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="id">1</td>
+        <td >MHP RO</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a id="tech"><h5 class="mb-3">Technology areas</h5></a>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <app-crud-technology-area style="width:100%"></app-crud-technology-area>
   </div>
   <h5 class="mb-3">Skills</h5>
   <div class="row shadow-sm p-3 mb-3 bg-white rounded">
-    <app-add-skills></app-add-skills>
+    <app-add-skills style="width:100%"></app-add-skills>
   </div>
-  <h5 class="mb-3">Regions</h5>
+  <a id="regions"><h5 class="mb-3">Regions</h5></a>
   <div class="row shadow-sm p-3 mb-3 bg-white rounded">
-    <app-regions></app-regions>
+    <app-regions style="width:100%"></app-regions>
   </div>
   <h5 class="mb-3">Projects</h5>
   <div class="row shadow-sm p-3 mb-3 bg-white rounded">
-    <app-create-project></app-create-project>
+    <app-create-project style="width:100%"></app-create-project>
   </div>
 </div>
