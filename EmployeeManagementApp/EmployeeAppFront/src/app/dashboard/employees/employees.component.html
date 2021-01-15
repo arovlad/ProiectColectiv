@@ -65,7 +65,7 @@
           <li class="list-group-item"><h6 class="card-title"><b>First Name: </b>{{ element.first_name }}</h6></li>
           <li class="list-group-item"><h6><b>Last Name: </b>{{  element.last_name }}</h6></li>
           <li class="list-group-item"><h6><b>Consulting level: </b>{{ element.id_consulting_level }}</h6></li>
-          <li class="list-group-item"><h6><b>Verified: </b> {{ element.verified }}</h6></li>
+          <li *ngIf="isVisible" class="list-group-item"><h6><b>Verified: </b> {{ element.verified }}</h6></li>
         </ul>
     </div>
 </div>
