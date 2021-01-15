@@ -7,6 +7,7 @@ import ro.ubb.implementations.ProfileProjectDaoImpl;
 import ro.ubb.interfaces.ProfileProjectService;
 import ro.ubb.mappers.ProfileProjectDtoMapper;
 import ro.ubb.models.ProfileProject;
+import ro.ubb.models.Project;
 
 
 public class ProfileProjectServiceImpl implements ProfileProjectService {
@@ -34,5 +35,11 @@ public class ProfileProjectServiceImpl implements ProfileProjectService {
     public List<Integer> findAllProjectsOfUser(int idProfile) throws DbException {
         ProfileProjectDaoImpl profileProjectDao = new ProfileProjectDaoImpl();
         return profileProjectDao.findAllProjectsOfUser(idProfile);
+    }
+
+    @Override
+    public int unassign(int idProfile, int idProject) throws DbException {
+        ProfileProjectDaoImpl profileProjectDao = new ProfileProjectDaoImpl();
+        return profileProjectDao.unassign(idProfile, idProject);
     }
 }

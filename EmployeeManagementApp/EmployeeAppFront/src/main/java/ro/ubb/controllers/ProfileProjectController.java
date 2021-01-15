@@ -42,4 +42,12 @@ public class ProfileProjectController {
   public List<Integer> findAllProjectsOfUser(@QueryParam("idProfile") int idProfile) throws DbException {
     return profileProjectService.findAllProjectsOfUser(idProfile);
   }
+
+  @DELETE
+  @Path("/unassign")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public int unassign(@QueryParam("idProfile") int idProfile, @QueryParam("idProject") int idProject) throws DbException {
+    return new ProfileProjectServiceImpl().unassign(idProfile,idProject);
+  }
 }
