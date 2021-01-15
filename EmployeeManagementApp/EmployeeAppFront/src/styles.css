@@ -5,6 +5,16 @@ table th {
   border: 0 !important;
 }
 
+.profile-card {
+  color: black;
+  text-decoration: none;
+}
+
+.profile-card:hover {
+  text-decoration: none;
+  color: black;
+}
+
 table {
   margin-bottom: 0 !important;
 }

@@ -11,12 +11,7 @@ import {IProjectInfoArray} from './projectInfoArray';
 })
 export class ProjectsComponent implements OnInit {
   @Input() userId: string | undefined;
-  public list: IProjectInfoArray[] = [
-    // {name: 'Project #1', role: 'Team leader', description: 'I worked on this.', duration: '2010-2013',
-    //   customer: 'MHP RO', skillList: ['java', 'sql']},
-    // {name: 'Project #2', role: 'Senior consultant', description: 'I worked on this too.', duration: '2010-2014',
-    //   customer: 'UBB', skillList: ['databases']}
-  ];
+  public list: IProjectInfoArray[] = [];
   public selectedId = -1;
 
   constructor(private service: ProjectsService, private ps: ProfileService, private http: HttpClient) { }

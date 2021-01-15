@@ -57,15 +57,19 @@
     </div>
   </div>
 
-    <div class="row shadow-sm p-3 mb-3 bg-white rounded" *ngFor="let element of list">
-        <div class="col-4">
-          <img [src]="picture" alt="image">
+    <a class="profile-card" href="/dashboard/employee/{{ element.id }}" *ngFor="let element of list">
+    <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+        <div class="col-3">
+          <img [src]="picture" alt="image" style="width: 170px; height: 170px">
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><h6 class="card-title"><b>First Name: </b>{{ element.first_name }}</h6></li>
-          <li class="list-group-item"><h6><b>Last Name: </b>{{  element.last_name }}</h6></li>
-          <li class="list-group-item"><h6><b>Consulting level: </b>{{ element.id_consulting_level }}</h6></li>
-          <li *ngIf="isVisible" class="list-group-item"><h6><b>Verified: </b> {{ element.verified }}</h6></li>
-        </ul>
+
+      <ul id="profileUI" class="list-group list-group-flush" style="width: 65%">
+        <h1 style="font-weight: lighter; margin-bottom:0; margin-top: 20px;">{{element.first_name}} {{element.last_name}}</h1>
+        <p class="mb-4">Consulting level {{ element.id_consulting_level }}</p>
+        <span *ngIf="isVisible">
+        <p class="mb-4" *ngIf="element.verified === 1"><b>Verified</b></p>
+        <p class="mb-4" *ngIf="element.verified === 0"><b style="color: red">Pending approval</b></p></span>
+      </ul>
     </div>
+    </a>
 </div>
