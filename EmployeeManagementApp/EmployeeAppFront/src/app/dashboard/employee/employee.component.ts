@@ -40,7 +40,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if ( localStorage.getItem('role') !== '1') {
+    if (localStorage.getItem('role') !== '1') {
       this.isVisible = true;
     }
     // @ts-ignore
@@ -178,4 +178,21 @@ export class EmployeeComponent implements OnInit {
     document.getElementById('addSkillDrawer').style.display = 'initial';
   }
 
+  setVerified(): void {
+    alert(this.id);
+    this.profileService.setVerified(this.id).subscribe((data) => {
+      alert('User is now verified');
+    }, (error) => {
+      alert('something went worng');
+    });
+  }
+
+  setNotVerified(): void {
+    alert(this.id);
+    this.profileService.setVerified(this.id).subscribe((data) => {
+      alert('User is now not verified');
+    }, (error) => {
+      alert('something went worng');
+    });
+  }
 }

@@ -65,6 +65,18 @@
 <h3>Regions: </h3>
 <br>
 
+<form>
+  <div class="form-group">
+    <label for="newName">Delete this region:</label>
+    <input [(ngModel)]="id" type="text" name="newName"
+           class="form-control"
+           id="id"
+           placeholder="Insert the ID of the region you want to delete">
+    <button type="submit"  class="btn btn-danger" (click)="delete(id)">delete<i class="fas fa-sign-in-alt"></i></button>
+
+  </div>
+</form>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -80,5 +92,6 @@
 <!--    <td class="but"> <button type="submit"  class="btn btn-danger" (click)="delete(region)">delete<i class="fas fa-sign-in-alt"></i></button> </td>-->
 <!--  </tr>-->
   </tbody>
-</table>
 
+
+</table>

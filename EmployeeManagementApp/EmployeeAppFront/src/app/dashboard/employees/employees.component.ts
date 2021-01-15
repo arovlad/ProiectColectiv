@@ -15,10 +15,14 @@ export class EmployeesComponent implements OnInit {
   query = '';
   techArea = '';
   picture = 'assets/profile.png ';
+  isVisible = false;
   // tslint:disable-next-line:max-line-length
   constructor(private service: UsersService, private http: HttpClient, private FilterService: FilterbytechnologyService, private skillService: SkillService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('role') !== '1') {
+      this.isVisible = true;
+    }
     this.getAllTechAreas2();
     this.service.get().subscribe(response =>
       {

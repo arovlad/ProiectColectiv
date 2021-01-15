@@ -10,14 +10,15 @@ export class RegionsComponent implements OnInit {
   regions: Array<any> = [];
   name = '';
   newName = '';
+  id = 0;
   constructor(private regionsService: RegionsService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  delete(param: string): void{
-    this.name = param;
-    alert(this.name);
-    this.regionsService.delete(this.name).subscribe((data) => {
+  delete(id: number): void{
+    this.id = id;
+    alert(this.id);
+    this.regionsService.delete(this.id).subscribe((data) => {
       alert('region area deleted from database');
     }, (error) => {
       alert('something went wrong');
