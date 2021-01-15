@@ -1,36 +1,71 @@
 <app-navbar></app-navbar>
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Users</a>
-  <form class="form-inline">
-    <div class="form-group">
-      <label for="technologyAreas" >Technology area:</label>
-      <select [(ngModel)]="query" id="technologyAreas" name="techarea">
-        <option *ngFor="let tech of techArea" [value]="tech">{{tech}}
-        </option>
-      </select>
+<!--<div class="container-md">-->
+<!--  <h5 class="mb-3">Users</h5>-->
+<!--  <div class="row shadow-sm p-3 mb-3 bg-white rounded">-->
+
+
+<!--<table class="table">-->
+<!--  <thead class="thead-dark">-->
+<!--  <tr>-->
+<!--    <th scope="col">#ID</th>-->
+<!--    <th scope="col">First Name</th>-->
+<!--    <th scope="col">Last Name</th>-->
+<!--    <th scope="col">Consulting Level</th>-->
+<!--    <th scope="col">Verified</th>-->
+<!--    <th scope="col"> <form class="form-inline">-->
+<!--    <div class="form-group">-->
+<!--      <label for="technologyAreas" ></label>-->
+<!--      <select [(ngModel)]="query" id="technologyAreas" name="techarea">-->
+<!--        <option *ngFor="let tech of techArea" [value]="tech">{{tech}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+<!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>-->
+<!--  </form></th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let element of list">-->
+<!--    <td>{{ element.id }}</td>-->
+<!--    <td>{{ element.first_name }}</td>-->
+<!--    <td>{{ element.last_name }}</td>-->
+<!--    <td>{{ element.id_consulting_level }}</td>-->
+<!--    <td>{{ element.verified }}</td>-->
+
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="container-md">
+  <div class="row">
+    <div class="col">
+      <h5 class="mb-3">Users</h5>
     </div>
+    <div class="col-md-auto">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="technologyAreas" ></label>
+          <select [(ngModel)]="query" id="technologyAreas" name="techarea">
+            <option *ngFor="let tech of techArea" [value]="tech">{{tech}}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>
+      </form>
+    </div>
+  </div>
 
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filter()">Search</button>
-  </form>
-</nav>
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">#ID</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Last Name</th>
-    <th scope="col">Consulting Level</th>
-    <th scope="col">Verified</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let element of list">
-    <td>{{ element.id }}</td>
-    <td>{{ element.first_name }}</td>
-    <td>{{ element.last_name }}</td>
-    <td>{{ element.id_consulting_level }}</td>
-    <td>{{ element.verified }}</td>
-
-  </tr>
-  </tbody>
-</table>
+    <div class="row shadow-sm p-3 mb-3 bg-white rounded" *ngFor="let element of list">
+        <div class="col-4">
+          <img [src]="picture" alt="image">
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h6 class="card-title"><b>First Name: </b>{{ element.first_name }}</h6></li>
+          <li class="list-group-item"><h6><b>Last Name: </b>{{  element.last_name }}</h6></li>
+          <li class="list-group-item"><h6><b>Consulting level: </b>{{ element.id_consulting_level }}</h6></li>
+          <li class="list-group-item"><h6><b>Verified: </b> {{ element.verified }}</h6></li>
+        </ul>
+    </div>
+</div>

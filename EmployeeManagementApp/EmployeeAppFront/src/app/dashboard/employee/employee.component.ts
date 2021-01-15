@@ -7,6 +7,7 @@ import {IProfileInfo} from './profileInfo';
 import {SkillService} from '../../services/skill.service';
 import {ILoginInformation} from '../../auth/login/loginInformation';
 import {ProfileService} from '../../services/profile.service';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-my-profile',
@@ -32,11 +33,16 @@ export class EmployeeComponent implements OnInit {
   name = '';
   skillLevel = 0;
   idSkill = 0;
+  isVisible = false;
+  role = '';
 
   constructor(private route: ActivatedRoute, private skillService: SkillService, private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
+    if ( localStorage.getItem('role') !== '1') {
+      this.isVisible = true;
+    }
     // @ts-ignore
     this.id = +this.route.snapshot.paramMap.get('id');
     // @ts-ignore
