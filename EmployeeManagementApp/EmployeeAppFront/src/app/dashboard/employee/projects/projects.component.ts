@@ -136,4 +136,16 @@ export class ProjectsComponent implements OnInit {
       alert('something went wrong');
     });
   }
+
+  remove($event: MouseEvent): void {
+    // @ts-ignore
+    const id = $event.currentTarget.parentElement.parentElement
+      .getElementsByClassName('project-id')[0].value;
+    this.service.delete(id).subscribe(result => { alert('Project deleted');
+      }, error => {
+        alert('Error');
+      }
+    );
+    //window.location.reload();
+  }
 }
