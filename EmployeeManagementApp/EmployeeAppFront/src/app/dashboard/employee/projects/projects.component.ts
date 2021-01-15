@@ -22,15 +22,26 @@ export class ProjectsComponent implements OnInit {
   constructor(private service: ProjectsService, private ps: ProfileService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.service.get('1').subscribe(response =>
-    {
-      const response2 = {response, id: 1};
-      console.log(response2);
-      this.list.push(response2);
-    },
-    error => {
-      alert('There was an error retrieving the projects.');
-    });
+    // @ts-ignore
+    this.service.getList(window.location.href.split('/').pop()).subscribe(
+      response3 => {
+        console.log(response3);
+        response3.forEach((e: string) => {
+          console.log(e);
+          // @ts-ignore
+          this.service.get(e).subscribe(response =>
+            {
+              const response2 = {response, id: 1};
+              console.log(response2);
+              this.list.push(response2);
+            },
+            error => {
+              alert('There was an error retrieving the projects.');
+            });
+        });
+      },
+      error => {}
+      );
   }
 
   isOwner(): boolean {

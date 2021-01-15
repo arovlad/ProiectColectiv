@@ -9,6 +9,10 @@ export class ProjectsService {
 
   constructor(private http: HttpClient) { }
 
+  getList(id: string): Observable<any> {
+    return this.http.get('http://localhost:8080/EmployeeAppFront_war/rest/profileproject?idProfile=' + id);
+  }
+
   get(id: string): Observable<any> {
     return this.http.get('http://localhost:8080/EmployeeAppFront_war/rest/project/find?id=' + id);
   }
