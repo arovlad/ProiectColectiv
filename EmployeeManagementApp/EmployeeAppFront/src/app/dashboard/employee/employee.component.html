@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container-md">
-  <div class="alert alert-danger" role="alert" *ngIf="isVisible">
+  <div class="alert alert-danger" role="alert" *ngIf="isVisible">{{role}}
     This profile is not verified!
-    <button style="margin-right: auto" type="button" class="btn btn-outline-danger">Verify</button>
+    <button style="margin-right: auto" type="button" class="btn btn-outline-danger" (click)="setVerified()">Verify</button>
   </div>
   <h5 class="mb-3">Profile information</h5>
   <div class="row shadow-sm p-3 mb-3 bg-white rounded">
