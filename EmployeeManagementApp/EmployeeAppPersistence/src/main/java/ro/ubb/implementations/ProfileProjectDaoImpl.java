@@ -178,4 +178,38 @@ public class ProfileProjectDaoImpl implements GenericDao, ProfileProjectDao {
             throw new DbException("Something went wrong with the database");
         }
     }
+
+    @Override
+    public int unassign(int idProfile, int idProject) throws DbException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+
+            String query = "SELECT * FROM profile_project WHERE ID_Profile =  ? AND ID_Project = ?";
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, idProfile);
+            statement.setInt(2, idProject);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+
+            if (resultSet.next()) {
+                delete(resultSet.getInt("ID"));
+            } else
+                return 0;
+
+            return 1;
+
+        } catch (SQLException sqlException) {
+            throw new DbException("Something went wrong with the database");
+        }
+    }
 }

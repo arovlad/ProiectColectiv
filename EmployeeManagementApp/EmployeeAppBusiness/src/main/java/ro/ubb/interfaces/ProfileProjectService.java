@@ -9,4 +9,5 @@ public interface ProfileProjectService {
     ProfileProjectDto save(ProfileProject profileProject) throws DbException;
     int delete(int idProfileProject) throws DbException;
     List<Integer> findAllProjectsOfUser(int idProfile) throws DbException;
+    int unassign(int idProfile, int idProject) throws DbException;
 }
