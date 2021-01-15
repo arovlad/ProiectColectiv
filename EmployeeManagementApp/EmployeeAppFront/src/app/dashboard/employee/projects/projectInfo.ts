@@ -1,8 +1,10 @@
 export interface IProjectInfo {
-  title: string;
-  role: string;
+  name: string;
+  // role: string;
   description: string;
-  duration: string;
-  client: string;
-  skillList: string[];
+  duration: number;
+  customer: number;
+  industry: number;
+  id: number;
+  // skillList: string[];
 }

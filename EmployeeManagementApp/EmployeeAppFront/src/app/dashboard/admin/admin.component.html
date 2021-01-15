@@ -1,2 +1,79 @@
 <app-navbar></app-navbar>
-<p>admin works!</p>
+<div class="container-md">
+  <a id="customers"><h5 class="mb-3">Customers</h5></a>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th style="width:90%">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="id">1</td>
+        <td >MHP RO</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a id="levels"><h5 class="mb-3">Consulting levels</h5></a>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th style="width:90%">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="id">1</td>
+        <td >Junior Consultant</td>
+      </tr>
+      <tr>
+        <td class="id">2</td>
+        <td>Consultant</td>
+      </tr>
+      <tr>
+        <td class="id">3</td>
+        <td>Senior Consultant</td>
+      </tr>
+      <tr>
+        <td class="id">4</td>
+        <td>Manager</td>
+      </tr>
+      <tr>
+        <td class="id">5</td>
+        <td>Senior Manager</td>
+      </tr>
+      <tr>
+        <td class="id">6</td>
+        <td>Associated Partner</td>
+      </tr>
+      <tr>
+        <td class="id">7</td>
+        <td>Partner</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a id="tech"><h5 class="mb-3">Technology areas</h5></a>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <app-crud-technology-area style="width:100%"></app-crud-technology-area>
+  </div>
+  <h5 class="mb-3">Skills</h5>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <app-add-skills style="width:100%"></app-add-skills>
+  </div>
+  <a id="regions"><h5 class="mb-3">Regions</h5></a>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <app-regions style="width:100%"></app-regions>
+  </div>
+  <h5 class="mb-3">Projects</h5>
+  <div class="row shadow-sm p-3 mb-3 bg-white rounded">
+    <app-create-project style="width:100%"></app-create-project>
+  </div>
+</div>

@@ -34,4 +34,4 @@ import { CrudTechnologyAreaComponent } from './admin/crud-technology-area/crud-t
     AddSkillsComponent
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {}

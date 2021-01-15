@@ -1,5 +1,32 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css");
 
+table th {
+  padding-top: 0 !important;
+  border: 0 !important;
+}
+
+.profile-card {
+  color: black;
+  text-decoration: none;
+}
+
+.profile-card:hover {
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  margin-bottom: 0 !important;
+}
+
+.table-striped tbody tr:nth-of-type(2n+1) {
+  background-color: rgba(0,0,0,.02) !important;
+}
+
+body {
+  background-color: #F7F7F7;
+}
+
 .navbar-dark.bg-primary, .badge.bg-primary {
   background-color: #3498db !important;
 }
@@ -34,4 +61,13 @@
 
 .shadow-sm {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+#NavbarDropdownMenu a {
+  color: black !important;
+  border: none;
+}
+
+#NavbarDropdownMenu a:active {
+  color: white !important;
 }
