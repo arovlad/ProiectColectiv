@@ -5,5 +5,6 @@ export interface IProjectInfo {
   duration: number;
   customer: number;
   industry: number;
+  id: number;
   // skillList: string[];
 }

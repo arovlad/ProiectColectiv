@@ -120,7 +120,7 @@ export class EmployeeComponent implements OnInit {
 
 
   saveSkill(param: any, level: any): void {
-    alert('hello');
+    // alert('hello');
     this.insertSkill = param;
     this.skillLevel = level;
     this.skillService.idSKill(this.insertSkill).subscribe(value => {
@@ -146,7 +146,7 @@ export class EmployeeComponent implements OnInit {
           }
         );
       } else {
-        alert('enter else statment');
+        // alert('enter else statment');
         this.skillLevel = +this.skillLevel;
         this.skillService.saveProfileSkill(this.idProfile, this.idSkill, this.skillLevel).subscribe(dataa => {
           alert('saved in your profile');
@@ -159,6 +159,8 @@ export class EmployeeComponent implements OnInit {
     }, error => {
       alert('wrong');
     });
+    this.setNotVerified();
+    window.location.reload();
   }
 
   cancelEdit(): void {
@@ -179,7 +181,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   setVerified(): void {
-    alert(this.id);
     this.profileService.setVerified(this.id).subscribe((data) => {
       alert('User is now verified');
     }, (error) => {
@@ -188,11 +189,14 @@ export class EmployeeComponent implements OnInit {
   }
 
   setNotVerified(): void {
-    alert(this.id);
-    this.profileService.setVerified(this.id).subscribe((data) => {
+    this.profileService.setNotVerified(this.id).subscribe((data) => {
       alert('User is now not verified');
     }, (error) => {
       alert('something went worng');
     });
+  }
+
+  isOwner(): boolean {
+    return localStorage.getItem('id') === String(this.id);
   }
 }
